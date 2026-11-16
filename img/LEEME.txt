@@ -1,0 +1,3 @@
+Colocar aquí la foto del presidente con el nombre:  fernando-ortiz.jpg
+(formato vertical 4:5 recomendado, por ejemplo 800x1000 px).
+Si la foto no existe, el sitio muestra sus iniciales.

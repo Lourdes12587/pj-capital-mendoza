@@ -60,7 +60,7 @@
 <header class="cabecera" id="cabecera">
   <div class="contenedor cabecera__barra">
     <a class="salto" href="#top">Saltar al contenido</a>
-    <a class="cabecera__marca" href="#top"><img src="img/logo-pj.png" alt="" width="44" height="44">PJ Capital</a>
+    <a class="cabecera__marca" href="#top"><img src="img/logo-pj.png" alt="" width="44" height="44"><span class="marca"><span class="marca__nombre">Partido Justicialista</span><span class="marca__lugar">Capital</span></span></a>
     <nav class="cabecera__nav" id="menu-principal" aria-label="Principal">
       <a href="#noticias">Noticias</a>
       <a href="#padron">Padrón</a>
@@ -193,25 +193,28 @@
     </div>
   </section>
 
-  <!-- 4. HABITANTES (banda celeste, 2 de 2) -->
-  <section class="section ground-surface" id="habitantes" aria-labelledby="habitantes-h">
-    <div class="wrap">
-      <div class="grid grid--top fill">
-        <div class="span-5 stack-4">
-          <div class="section-head">
-            <h2 id="habitantes-h">Habitantes de las 12 secciones</h2>
-            <p>Tocá una sección del mapa o de la lista para ver cuántos vecinos viven en ella.</p>
-          </div>
-          <div class="census" aria-live="polite">
-            <p class="t-label muted" id="census-name">Total de la Capital</p>
-            <p class="t-stat" id="census-num">—</p>
-            <p class="t-small muted" id="census-share">12 secciones</p>
-          </div>
+  <!-- 4. HABITANTES (03): el mapa esquemático sobre un círculo negro y la lista de secciones.
+       Las cifras de población están PENDIENTES (js/data.js): la página muestra "Dato pendiente". -->
+  <section class="seccion" id="habitantes" aria-labelledby="habitantes-h">
+    <div class="contenedor">
+      <header class="seccion__cabeza">
+        <span class="seccion__num" aria-hidden="true">03</span>
+        <h2 id="habitantes-h">Habitantes</h2>
+        <p class="seccion__bajada">Las 12 secciones de la Ciudad de Mendoza. Tocá una en el mapa o en la lista para ver su población.</p>
+      </header>
+      <div class="habitantes">
+        <div class="habitantes__dato census" aria-live="polite">
+          <p class="etiqueta" id="census-name">Total de la Capital</p>
+          <p class="habitantes__cifra" id="census-num">—</p>
+          <p class="etiqueta habitantes__fuente" id="census-share">12 secciones</p>
         </div>
-        <div class="span-6 start-7 census__map">
-          <svg id="mapa" viewBox="0 0 800 430" role="img" aria-label="Mapa de las 12 secciones de la Ciudad de Mendoza, de oeste a este"></svg>
+        <ol class="habitantes__lista census__rows" id="census-rows"></ol>
+        <div class="habitantes__mapa census__map">
+          <span class="forma forma--circulo habitantes__circulo" aria-hidden="true"></span>
+          <span class="forma forma--tri-der habitantes__tri" aria-hidden="true"></span>
+          <svg id="mapa" viewBox="0 0 800 430" role="group" aria-label="Mapa esquemático de las 12 secciones de la Ciudad de Mendoza, de oeste a este"></svg>
           <div class="census__legend" aria-hidden="true"><span>Menos</span><span class="census__ramp"></span><span>Más habitantes</span></div>
-          <ol class="census__rows" id="census-rows"></ol>
+          <p class="etiqueta habitantes__nota">Mapa esquemático: los límites son aproximados.</p>
         </div>
       </div>
     </div>
@@ -252,23 +255,27 @@
     </div>
   </section>
 
-  <!-- 9. PREAFILIACIÓN: NO es la afiliación oficial (CLAUDE.md, sección 2).
-       Datos mínimos (Ley 25.326): nombre, apellido, DNI, teléfono, email opcional y sección. -->
-  <section class="section ground-surface" id="preafiliacion" style="--hm: 2" aria-labelledby="preafiliacion-h">
-    <div class="wrap">
-      <div class="grid grid--top">
-        <div class="span-6 stack-4">
-          <div class="section-head">
-            <h2 id="preafiliacion-h">Preafiliación al PJ Capital</h2>
-            <p>Dejá tus datos y el partido se va a comunicar con vos para completar la afiliación oficial.</p>
-          </div>
-          <div class="pre-info">
+  <!-- 9. PREAFILIACIÓN (04): NO es la afiliación oficial (CLAUDE.md, sección 2).
+       Datos mínimos (Ley 25.326): nombre, apellido, DNI, teléfono, email opcional y sección.
+       El formulario conserva la clase "form" del kit: su validación muestra los errores bajo cada campo. -->
+  <section class="seccion papel" id="preafiliacion" aria-labelledby="preafiliacion-h">
+    <div class="contenedor">
+      <header class="seccion__cabeza">
+        <span class="seccion__num" aria-hidden="true">04</span>
+        <h2 id="preafiliacion-h">Preafiliación</h2>
+      </header>
+      <div class="preafiliacion">
+        <div class="preafiliacion__info">
+          <p class="preafiliacion__bajada">Dejá tus datos y el partido se va a comunicar con vos para completar la afiliación oficial.</p>
+          <div class="preafiliacion__aviso">
             <h3>Qué es la preafiliación</h3>
             <p>Es un primer contacto, no la afiliación oficial. Con este formulario no quedás afiliado/a: el partido te llama o te escribe para hacer el trámite formal.</p>
             <p>Usamos tus datos solo para contactarte por la afiliación.</p>
           </div>
+          <span class="forma forma--tri-der preafiliacion__tri" aria-hidden="true"></span>
+          <span class="forma forma--circulo preafiliacion__circulo" aria-hidden="true"></span>
         </div>
-        <form class="form pre span-6 start-7" id="pre-form" novalidate data-fix="Revisá {n} campos marcados.">
+        <form class="form formulario" id="pre-form" novalidate data-fix="Revisá {n} campos marcados.">
           <div class="field"><label for="f-nombre">Nombre</label>
             <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" required minlength="2" aria-describedby="f-nombre-err">
             <p class="field__error" id="f-nombre-err" hidden>Escribí tu nombre como figura en el DNI.</p></div>
@@ -281,10 +288,10 @@
           <div class="field"><label for="f-telefono">Teléfono</label>
             <input id="f-telefono" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required pattern="[0-9 +()\-]{8,20}" aria-describedby="f-telefono-err">
             <p class="field__error" id="f-telefono-err" hidden>Escribí un teléfono con código de área, por ejemplo 261 555 1234.</p></div>
-          <div class="field"><label for="f-email">Email <span class="muted">(opcional)</span></label>
+          <div class="field"><label for="f-email">Email <span class="formulario__opcional">(opcional)</span></label>
             <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="f-email-err">
             <p class="field__error" id="f-email-err" hidden>Escribí un email con @, por ejemplo nombre@correo.com, o dejalo vacío.</p></div>
-          <div class="field field--full"><label for="f-seccion">Sección de Capital</label>
+          <div class="field"><label for="f-seccion">Sección de Capital</label>
             <select id="f-seccion" name="seccion" required aria-describedby="f-seccion-err"><option value="">Elegí tu sección</option></select>
             <p class="field__error" id="f-seccion-err" hidden>Elegí la sección de la Capital donde vivís.</p></div>
           <div class="field field--full check-field">
@@ -292,63 +299,62 @@
             <label class="check" for="f-consentimiento"><input type="checkbox" id="f-consentimiento" name="consentimiento" required aria-describedby="f-consentimiento-err"><span class="pendiente">PENDIENTE: texto legal de consentimiento</span></label>
             <p class="field__error" id="f-consentimiento-err" hidden>Para enviar la preafiliación tenés que dar tu consentimiento.</p>
           </div>
-          <div class="btn-row"><button class="btn btn--primary" type="submit" id="pre-submit">Enviar mi preafiliación</button></div>
+          <div class="btn-row"><button class="boton boton--primario formulario__enviar" type="submit" id="pre-submit">Enviar mi preafiliación <span class="boton__flecha" aria-hidden="true"></span></button></div>
           <p class="form__status" role="status" data-form-status id="pre-status"></p>
-          <p class="t-small muted">El partido se comunica con vos para completar la afiliación oficial.</p>
+          <p class="formulario__nota">El partido se comunica con vos para completar la afiliación oficial.</p>
         </form>
       </div>
     </div>
   </section>
 
-  <!-- 10. COMISIÓN PARTIDARIA -->
-  <section class="section" id="comision" style="--hm: 2" aria-labelledby="comision-h">
-    <div class="wrap">
-      <div class="grid grid--top fill">
-        <div class="span-6 stack-4">
-          <div class="section-head">
-            <h2 id="comision-h">Comisión partidaria</h2>
+  <!-- 10. COMISIÓN PARTIDARIA (05): el presidente con su foto recortada y los cargos numerados.
+       Foto: guardarla como img/fernando-ortiz.jpg (vertical 4:5); mientras no exista se ve una foto de la Capital. -->
+  <section class="seccion" id="comision" aria-labelledby="comision-h">
+    <div class="contenedor">
+      <header class="seccion__cabeza">
+        <span class="seccion__num" aria-hidden="true">05</span>
+        <h2 id="comision-h">Comisión partidaria</h2>
+      </header>
+      <div class="comision">
+        <div class="comision__presidente">
+          <div class="comision__media">
+            <figure class="foto comision__foto">
+              <img id="presidente-foto" src="assets/img/photo-f26802902-960.jpg" width="960" height="582" alt="Fuente y murales de la Plaza Independencia" loading="lazy" decoding="async" style="object-position: 40% 50%">
+            </figure>
+            <span class="forma forma--tri-abajo comision__tri" aria-hidden="true"></span>
           </div>
-          <div class="leader">
-            <p class="t-label muted">Presidente</p>
-            <h3 class="leader__name">Fernando Ortiz</h3>
-            <p id="presidente-desc"></p>
-          </div>
-          <ul class="rows" id="comision-rows"></ul>
+          <p class="etiqueta">Presidente</p>
+          <h3 class="comision__nombre">Fernando Ortiz</h3>
+          <p id="presidente-desc"></p>
         </div>
-        <!-- espacio para la foto de Fernando Ortiz: guardarla como img/fernando-ortiz.jpg (vertical 4:5);
-             mientras no exista se ve esta foto de la Capital -->
-        <div class="frame frame--photo frame--fill span-6 start-7">
-          <img class="frame__img" id="presidente-foto" src="assets/img/photo-f82921622-960.jpg" width="960" height="720" alt="Monumento del Cerro de la Gloria, en el Parque General San Martín" loading="lazy" decoding="async" data-source="stand-in" data-subject="Cerro de la Gloria, Ciudad de Mendoza">
-        </div>
+        <ol class="comision__cargos" id="comision-rows"></ol>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
-  <div class="wrap">
-    <div class="closing__cta close--type">
-      <div class="section-head">
-        <h2 id="close-h">Sumate al PJ de la Capital</h2>
-        <p>Dejá tus datos y el partido te contacta para completar la afiliación oficial.</p>
-      </div>
-      <a class="btn btn--primary btn--xl btn--wide" href="#preafiliacion">Sumarme al PJ<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+<footer class="pie" id="contact" aria-labelledby="close-h">
+  <div class="contenedor">
+    <div class="pie__cierre">
+      <h2 id="close-h">Sumate al PJ de la Capital</h2>
+      <p>Dejá tus datos y el partido te contacta para completar la afiliación oficial.</p>
+      <a class="boton boton--primario" href="#preafiliacion">Sumarme al PJ <span class="boton__flecha" aria-hidden="true"></span></a>
+      <span class="forma forma--tri-der pie__tri" aria-hidden="true"></span>
     </div>
-    <div class="closing__links">
-      <div class="grid">
-        <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top"><img class="nav__logo-img" src="img/logo-pj.png" alt="" width="40" height="40">PJ Capital</a>
-          <p class="footer__lede">Partido Justicialista de la Ciudad de Mendoza.</p>
-        </div>
-        <div class="span-2 footer__col"><h3>Partido</h3><ul><li><a href="#noticias">Noticias</a></li><li><a href="#comision">Comisión</a></li><li><a href="#banderas">Banderas</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Afiliados</h3><ul><li><a href="#padron">Padrón</a></li><li><a href="#pasos">Cómo preafiliarse</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Vecinos</h3><ul><li><a href="#habitantes">Habitantes</a></li></ul></div>
+    <div class="pie__enlaces">
+      <div class="pie__marca">
+        <a class="pie__logo" href="#top"><img src="img/logo-pj.png" alt="" width="64" height="64"><span class="marca"><span class="marca__nombre">Partido Justicialista</span><span class="marca__lugar">Capital</span></span></a>
+        <p>Partido Justicialista de la Ciudad de Mendoza.</p>
       </div>
-      <div class="footer__legal">
-        <span>&copy; 2026 PJ Capital Mendoza</span>
-        <div class="socials"></div>
-        <a class="credits" href="credits.html">Fotografías vía Wikimedia Commons</a>
-      </div>
+      <nav class="pie__nav" aria-label="Pie de página">
+        <div><h3 class="etiqueta">Partido</h3><ul><li><a href="#noticias">Noticias</a></li><li><a href="#comision">Comisión</a></li><li><a href="#banderas">Banderas</a></li></ul></div>
+        <div><h3 class="etiqueta">Afiliados</h3><ul><li><a href="#padron">Padrón</a></li><li><a href="#pasos">Cómo preafiliarse</a></li><li><a href="#preafiliacion">Preafiliación</a></li></ul></div>
+        <div><h3 class="etiqueta">Vecinos</h3><ul><li><a href="#habitantes">Habitantes</a></li></ul></div>
+      </nav>
+    </div>
+    <div class="pie__legal">
+      <span>&copy; 2026 PJ Capital Mendoza</span>
+      <a href="credits.html">Fotografías vía Wikimedia Commons</a>
     </div>
   </div>
 </footer>

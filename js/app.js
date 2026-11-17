@@ -58,8 +58,11 @@
 
   /* ---------------- Comisión partidaria ---------------- */
   $("#presidente-desc").textContent = D.presidente.descripcion;
-  $("#comision-rows").innerHTML = D.comision.map((m) =>
-    `<li><span class="rows__name">${esc(m.cargo)}</span><span class="rows__value">${esc(m.nombre)}</span></li>`).join("");
+  const pend = (t) => /^PENDIENTE/.test(t);
+  $("#comision-rows").innerHTML = D.comision.map((m, i) =>
+    `<li><span class="cargo__num" aria-hidden="true">${String(i + 1).padStart(2, "0")}</span>` +
+    `<span class="cargo__rol">${esc(m.cargo)}</span>` +
+    `<span class="cargo__nombre${pend(m.nombre) ? " pendiente" : ""}">${esc(m.nombre)}</span></li>`).join("");
   // la foto real del presidente reemplaza a la de la Capital apenas se guarde en img/fernando-ortiz.jpg
   const foto = new Image();
   foto.onload = () => { const el = $("#presidente-foto"); el.src = foto.src; el.removeAttribute("srcset"); el.alt = "Fernando Ortiz, presidente del PJ Capital"; el.dataset.source = "client"; };

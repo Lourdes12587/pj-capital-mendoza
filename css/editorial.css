@@ -230,3 +230,169 @@ main > section.seccion.papel[id] { background-color: var(--c-beige); }
   .padron__foto { aspect-ratio: 4 / 3; }
   .padron__sumarme .boton { flex: 1 1 100%; }
 }
+
+/* marcador PENDIENTE dentro de la paleta: texto negro en mono con un subrayado azul grueso */
+.pendiente { color: var(--c-negro); font-family: var(--f-mono); font-weight: 500;
+  background: linear-gradient(transparent 62%, rgb(80 160 200 / .55) 62%); }
+
+/* ---------- 03 HABITANTES: mapa sobre un círculo negro, dato grande y lista ---------- */
+.habitantes { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s-6); align-items: start; }
+.habitantes__dato { grid-column: 1 / span 5; display: grid; gap: var(--s-2); padding-bottom: var(--s-5); border-bottom: 2px solid var(--c-negro); }
+.habitantes__dato p { margin: 0; }
+.habitantes__cifra { font: 800 clamp(1.75rem, 1.2rem + 1.8vw, 2.75rem)/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.habitantes__lista { grid-column: 1 / span 5; grid-row: 2; list-style: none; margin: 0; padding: 0; display: block; }
+.habitantes__lista button {
+  width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: var(--s-4);
+  padding: 0; border: 0; border-bottom: 1px solid rgb(8 8 8 / .2); background: none; cursor: pointer; text-align: left;
+  font: 500 .9375rem/1.3 var(--f-texto); color: var(--c-negro); transition: padding var(--dur) var(--ease);
+}
+.habitantes__lista button span:last-child { font: 400 var(--t-label)/1.3 var(--f-mono); color: var(--c-texto-suave); white-space: nowrap; }
+.habitantes__lista button:hover, .habitantes__lista button[aria-pressed="true"] { padding-left: var(--s-3); }
+.habitantes__lista button[aria-pressed="true"] { font-weight: 700; box-shadow: inset 4px 0 0 var(--c-azul); }
+.habitantes__mapa { grid-column: 6 / span 7; grid-row: 1 / span 2; position: relative; display: grid; gap: var(--s-4); padding-top: var(--s-6); }
+.habitantes__circulo { left: -1%; top: 0; width: 22%; aspect-ratio: 1; z-index: 0; }
+.habitantes__tri { right: -2%; bottom: 14%; width: 11%; aspect-ratio: 1 / 1.15; z-index: 0; }
+.habitantes__mapa svg { position: relative; z-index: 1; }
+.habitantes__nota { position: relative; z-index: 1; color: var(--c-texto-suave); }
+/* el mapa en la paleta: secciones beige con borde negro; la elegida, azul */
+#habitantes .sec path { fill: var(--c-beige); stroke: var(--c-negro); stroke-width: 1.5; transition: fill var(--dur) var(--ease); }
+#habitantes .sec[data-level="0"] path { fill: color-mix(in srgb, var(--c-azul) 15%, var(--c-blanco)); }
+#habitantes .sec[data-level="1"] path { fill: color-mix(in srgb, var(--c-azul) 35%, var(--c-blanco)); }
+#habitantes .sec[data-level="2"] path { fill: color-mix(in srgb, var(--c-azul) 60%, var(--c-blanco)); }
+#habitantes .sec[data-level="3"] path { fill: var(--c-azul); }
+#habitantes .sec[data-level="4"] path { fill: color-mix(in srgb, var(--c-azul) 55%, var(--c-negro)); }
+#habitantes .sec:hover path, #habitantes .sec.is-on path { fill: var(--c-azul); stroke-width: 3; }
+#habitantes .sec:focus-visible path { stroke-width: 4; }
+#habitantes .sec text { font: 500 17px var(--f-mono); fill: var(--c-negro); }
+#habitantes .census__legend { font: 400 var(--t-label) var(--f-mono); color: var(--c-negro); }
+#habitantes .census__ramp { border-radius: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--c-azul) 15%, var(--c-blanco)), var(--c-azul)); }
+
+/* ---------- 04 PREAFILIACIÓN: explicación a la izquierda, formulario blanco con campos de línea ---------- */
+.preafiliacion { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s-7); align-items: start; }
+.preafiliacion__info { grid-column: 1 / span 5; position: relative; display: grid; gap: var(--s-6); padding-bottom: var(--s-10); }
+.preafiliacion__bajada { font: 800 clamp(1.375rem, 1.1rem + 1vw, 2rem)/1.15 var(--f-display); font-stretch: 108%; }
+.preafiliacion__aviso { display: grid; gap: var(--s-3); padding: var(--s-5); background: var(--c-negro); color: var(--c-blanco); }
+.preafiliacion__aviso h3 { font: 700 1.125rem/1.2 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.preafiliacion__aviso p { font: 400 1rem/1.6 var(--f-texto); }
+.preafiliacion__tri { left: 0; bottom: 0; width: 110px; height: 120px; }
+.preafiliacion__circulo { left: 96px; bottom: 30px; width: 54px; height: 54px; }
+
+.formulario { grid-column: 7 / span 6; background: var(--c-blanco); border: 2px solid var(--c-negro); padding: var(--s-7) var(--s-6);
+  column-gap: var(--s-6); row-gap: var(--s-5); --error: var(--c-negro); --bg: var(--c-blanco); --ink: var(--c-negro); }
+.formulario .field { gap: var(--s-2); }
+.formulario label { font: 600 .875rem/1.3 var(--f-texto); color: var(--c-negro); }
+.formulario__opcional { font-weight: 400; color: var(--c-texto-suave); }
+.formulario .field :is(input, select) {
+  height: 48px; padding: 0 2px; border: 0; border-bottom: 2px solid var(--c-negro); border-radius: 0; background: transparent;
+  font: 400 1rem/1.4 var(--f-texto); color: var(--c-negro); transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.formulario .field select { appearance: none; padding-right: 28px; cursor: pointer;
+  background: linear-gradient(135deg, transparent 50%, var(--c-negro) 50%) right 6px center / 10px 10px no-repeat; }
+.formulario .field :is(input, select):focus { outline: none; border-bottom-color: var(--c-azul); box-shadow: 0 3px 0 var(--c-azul); }
+.formulario .field :is(input, select):focus-visible { outline: 3px solid var(--c-negro); outline-offset: 4px; }
+.formulario .field :is(input, select)[aria-invalid="true"] { border: 0; border-bottom: 3px solid var(--c-negro); background: rgb(80 160 200 / .12); }
+.formulario .check { font: 400 1rem/1.5 var(--f-texto); }
+.formulario .check input { accent-color: var(--c-negro); width: 22px; height: 22px; }
+.formulario .btn-row { margin-top: var(--s-3); }
+.formulario__enviar { width: 100%; min-height: 56px; font-size: 1.0625rem; }
+.formulario .form__status { font: 600 1rem/1.5 var(--f-texto); color: var(--c-negro); }
+.formulario__nota { grid-column: 1 / -1; font: 400 var(--t-label)/1.5 var(--f-mono); color: var(--c-texto-suave); }
+
+/* ---------- 05 COMISIÓN: el presidente con foto recortada y los cargos numerados ---------- */
+.comision { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s-7); align-items: start; }
+.comision__presidente { grid-column: 1 / span 5; display: grid; gap: var(--s-3); }
+.comision__media { position: relative; margin-bottom: var(--s-3); }
+.comision__foto { aspect-ratio: 4 / 5; clip-path: polygon(0 0, 78% 0, 100% 16%, 100% 100%, 0 100%); }
+.comision__tri { right: -16px; bottom: -28px; width: 96px; height: 84px; z-index: 1; }
+.comision__nombre { font: 800 clamp(1.75rem, 1.2rem + 1.8vw, 2.75rem)/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: -.01em; }
+#presidente-desc { font: 400 var(--t-lead)/1.55 var(--f-texto); max-width: 44ch; }
+.comision__cargos { grid-column: 7 / span 6; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--s-6);
+  border-top: 2px solid var(--c-negro); }
+.comision__cargos > li { display: grid; grid-template-columns: auto 1fr; column-gap: var(--s-4); row-gap: 2px; padding: var(--s-4) 0; border-bottom: 1px solid rgb(8 8 8 / .2); }
+.cargo__num { grid-row: span 2; font: 200 2rem/1 var(--f-display); font-stretch: 125%; color: var(--c-negro); min-width: 2.2ch; }
+.cargo__rol { font: 600 1rem/1.3 var(--f-texto); }
+.cargo__nombre { font: 400 .9375rem/1.4 var(--f-texto); justify-self: start; }
+.cargo__nombre.pendiente { font: 500 var(--t-label)/1.4 var(--f-mono); }
+
+/* ---------- PIE: negro con grano, cierre grande y enlaces ---------- */
+.pie { position: relative; isolation: isolate; background: var(--c-negro); color: var(--c-blanco); padding: var(--s-10) 0 var(--s-6); overflow: hidden; }
+.pie::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: var(--grano); background-size: 220px; opacity: .22; mix-blend-mode: screen; }
+.pie h2, .pie h3, .pie p, .pie ul { margin: 0; }
+.pie .etiqueta { color: var(--c-blanco); }
+.pie__cierre { position: relative; display: grid; gap: var(--s-5); justify-items: start; padding-bottom: var(--s-9); border-bottom: 1px solid rgb(248 248 248 / .35); }
+.pie__cierre h2 { font: 800 clamp(2.5rem, 1rem + 6vw, 6.5rem)/.92 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: -.02em; max-width: 12ch; }
+.pie__cierre p { font: 400 var(--t-lead)/1.55 var(--f-texto); max-width: 46ch; }
+.pie__cierre .boton--primario { border-color: var(--c-azul); }
+.pie__cierre .boton--primario:hover { background: var(--c-blanco); color: var(--c-negro); border-color: var(--c-blanco); }
+.pie__tri { right: 0; top: 8%; width: clamp(120px, 18vw, 260px); aspect-ratio: 1 / 1.15; }
+.pie__enlaces { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s-6); padding: var(--s-8) 0; }
+.pie__marca { grid-column: 1 / span 5; display: grid; gap: var(--s-4); align-content: start; }
+.pie__logo { display: inline-flex; align-items: center; gap: var(--s-3); color: var(--c-blanco); text-decoration: none;
+  font: 800 1.5rem/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.pie__logo img { height: 64px; width: auto; }
+.pie__marca p { font: 400 1rem/1.5 var(--f-texto); color: rgb(248 248 248 / .8); }
+.pie__nav { grid-column: 7 / span 6; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); }
+.pie__nav ul { list-style: none; padding: 0; margin-top: var(--s-3); display: grid; gap: var(--s-1); }
+.pie__nav a, .pie__legal a { color: var(--c-blanco); text-decoration: none; display: inline-block; padding-block: var(--s-2);
+  background: linear-gradient(var(--c-azul), var(--c-azul)) 0 100% / 0 2px no-repeat; transition: background-size var(--dur) var(--ease); }
+.pie__nav a:hover, .pie__legal a:hover { background-size: 100% 2px; }
+.pie a:focus-visible { outline-color: var(--c-blanco); }
+.pie__legal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); padding-top: var(--s-5);
+  border-top: 1px solid rgb(248 248 248 / .35); font: 400 var(--t-label)/1.5 var(--f-mono); color: rgb(248 248 248 / .8); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .habitantes__circulo, .preafiliacion__tri, .comision__tri { animation: entra 700ms var(--ease) both 150ms; }
+}
+
+/* tablet */
+@media (max-width: 1023px) {
+  .habitantes__dato, .habitantes__lista, .habitantes__mapa { grid-column: 1 / -1; grid-row: auto; }
+  .habitantes__mapa { order: -1; }
+  .habitantes__lista { columns: 2; column-gap: var(--s-6); }
+  .habitantes__lista li { break-inside: avoid; }
+  .preafiliacion__info, .formulario { grid-column: 1 / -1; }
+  .preafiliacion__info { padding-bottom: 0; }
+  .preafiliacion__tri, .preafiliacion__circulo { display: none; }
+  .comision__presidente, .comision__cargos { grid-column: 1 / -1; }
+  .comision__presidente { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--s-6); align-items: end; }
+  .comision__media { grid-row: span 4; }
+  .pie__marca, .pie__nav { grid-column: 1 / -1; }
+}
+/* celular */
+@media (max-width: 639px) {
+  .habitantes__lista { columns: 1; }
+  .formulario { padding: var(--s-5) var(--s-4); }
+  .comision__presidente { grid-template-columns: minmax(0, 1fr); }
+  .comision__media { grid-row: auto; margin-bottom: var(--s-5); }
+  .comision__tri { width: 64px; height: 56px; right: -6px; bottom: -18px; }
+  .comision__cargos { grid-template-columns: minmax(0, 1fr); }
+  .pie { padding-top: var(--s-9); }
+  .pie__tri { width: 90px; top: 0; right: -10px; }
+  .pie__cierre .boton { width: 100%; }
+  .pie__nav { grid-template-columns: 1fr 1fr; }
+  .pie__legal { flex-direction: column; }
+}
+
+/* celular: el número de sección arriba del título, así los títulos largos (PREAFILIACIÓN) no se salen */
+@media (max-width: 639px) {
+  .seccion__cabeza { grid-template-columns: minmax(0, 1fr); row-gap: var(--s-2); }
+  .seccion__num { font-size: 3.5rem; }
+  .seccion h2 { overflow-wrap: anywhere; }
+}
+
+/* ---------- texto junto al logo: "PARTIDO JUSTICIALISTA" y debajo "Capital", más chico y con otro diseño ---------- */
+.marca { display: grid; gap: 5px; line-height: 1; }
+.marca__nombre { font: 800 1.125rem/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: -.005em; }
+.marca__lugar { display: inline-flex; align-items: center; gap: 8px; font: 300 .75rem/1 var(--f-display); font-stretch: 125%;
+  text-transform: uppercase; letter-spacing: .32em; }
+.marca__lugar::before { content: ""; width: 18px; height: 3px; background: var(--c-azul); flex: none; }
+.cabecera__marca { font: inherit; text-transform: none; }
+.pie__logo .marca__nombre { font-size: 1.375rem; }
+.pie__logo .marca__lugar { font-size: .8125rem; }
+@media (max-width: 1100px) and (min-width: 1024px) { .cabecera__nav { gap: var(--s-5); } }
+@media (max-width: 639px) {
+  .marca__nombre { font-size: .875rem; }
+  .marca__lugar { font-size: .625rem; letter-spacing: .26em; gap: 6px; }
+  .marca__lugar::before { width: 12px; }
+}
+@media (max-width: 359px) { .marca__nombre { font-size: .75rem; } }

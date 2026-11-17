@@ -12,6 +12,8 @@
   background-image: var(--grano); background-size: 220px; opacity: .28; mix-blend-mode: multiply;
 }
 :focus-visible { outline: 3px solid var(--c-negro); outline-offset: 3px; }
+/* al saltar a una sección desde el menú, el título no queda debajo de la cabecera fija */
+main > section[id], #contact { scroll-margin-top: var(--header-h); }
 
 /* ---------- botones: rectangulares, azul con texto negro ---------- */
 .boton {
@@ -142,4 +144,89 @@ main > section.portada.papel { height: auto; min-height: calc(100svh - var(--hea
   .friso .f5 { left: 58%; top: 58%; width: 16%; }
   .friso .f4 { left: -3%; top: 0; width: 12%; }
   .portada__acciones .boton { flex: 1 1 100%; }
+}
+
+/* =========================================================
+   SECCIONES EDITORIALES
+   Cada sección: número grande y fino ("01") + título ancho en mayúsculas, y una composición propia.
+   main > section.seccion[id] tiene más especificidad que las reglas de alto del kit anterior.
+   ========================================================= */
+main > section.seccion[id] { height: auto; min-height: 0; display: block; padding: var(--s-10) 0; background-color: var(--c-blanco); color: var(--c-negro); }
+main > section.seccion.papel[id] { background-color: var(--c-beige); }
+.seccion h2, .seccion h3, .seccion p { margin: 0; }
+.seccion__cabeza { display: grid; grid-template-columns: auto 1fr; column-gap: var(--s-5); align-items: end; margin-bottom: var(--s-8);
+  padding-bottom: var(--s-5); border-bottom: 1px solid var(--c-linea); }
+.seccion__num { font: 200 var(--t-num)/.78 var(--f-display); font-stretch: 125%; color: var(--c-azul); letter-spacing: -.04em; }
+.seccion h2 { font: 800 var(--t-h2)/.95 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: -.015em; }
+.seccion__bajada { grid-column: 1 / -1; margin-top: var(--s-5) !important; max-width: 60ch; font: 400 var(--t-lead)/1.55 var(--f-texto); }
+
+/* ---------- 01 NOTICIAS: una principal grande + lista con líneas finas ---------- */
+.noticias { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s-7); align-items: start; }
+.noticia-principal { grid-column: 1 / span 7; position: relative; }
+.noticia-principal__enlace { display: grid; gap: var(--s-4); color: inherit; text-decoration: none; }
+.noticia-principal__foto { aspect-ratio: 16 / 10; clip-path: polygon(0 0, 100% 0, 100% 82%, 86% 100%, 0 100%); margin-bottom: var(--s-3); }
+.noticia-principal__foto img { transition: transform 600ms var(--ease), filter 600ms var(--ease); }
+.noticia-principal__enlace:hover .noticia-principal__foto img { transform: scale(1.03); filter: grayscale(.6) contrast(1.15); }
+.noticia-principal__media { position: relative; margin-bottom: var(--s-3); }
+.noticia-principal__media .noticia-principal__foto { margin-bottom: 0; }
+.noticia-principal__tri { left: -18px; bottom: 12%; width: 84px; height: 96px; z-index: 1; }
+.noticia-principal h3 { font: 800 clamp(1.625rem, 1.1rem + 1.6vw, 2.5rem)/1.02 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: -.01em; max-width: 18ch; }
+.noticia-principal p:not(.etiqueta) { max-width: 52ch; font: 400 var(--t-lead)/1.55 var(--f-texto); }
+.noticia__mas { justify-self: start; font: 600 1rem/1 var(--f-texto); padding-bottom: 4px;
+  background: linear-gradient(var(--c-negro), var(--c-negro)) 0 100% / 100% 2px no-repeat; transition: background-size var(--dur) var(--ease); }
+.noticia-principal__enlace:hover .noticia__mas { background-size: 40% 2px; }
+
+.noticias__lista { grid-column: 9 / span 4; list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--c-negro); }
+.noticias__lista > li { border-bottom: 1px solid var(--c-linea); }
+.noticias__lista a { display: grid; gap: var(--s-2); padding: var(--s-5) 0; color: inherit; text-decoration: none; position: relative; }
+.noticias__lista h3 { font: 700 1.25rem/1.15 var(--f-display); font-stretch: 108%; padding-right: var(--s-6); }
+.noticias__lista a::after { content: ""; position: absolute; right: 0; top: calc(var(--s-5) + 26px); width: 12px; height: 14px;
+  background: var(--c-azul); clip-path: polygon(0 0, 100% 50%, 0 100%); transition: transform var(--dur) var(--ease); }
+.noticias__lista a:hover::after { transform: translateX(4px); }
+.noticias__lista a:hover h3 { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.noticias__lista p:not(.etiqueta) { font: 400 1rem/1.55 var(--f-texto); color: var(--c-texto-suave); }
+.noticias__pendiente { padding: var(--s-5) 0; }
+
+/* ---------- 02 PADRÓN: dos consultas numeradas + foto con velo azul (referencia NEWORK) ---------- */
+.padron { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: var(--s-6); position: relative;
+  grid-template-areas: "pasos pasos pasos pasos pasos pasos pasos . foto foto foto foto"
+                       "aviso aviso aviso aviso aviso aviso aviso . foto foto foto foto"
+                       "sumar sumar sumar sumar sumar sumar sumar . foto foto foto foto"; }
+.padron__pasos { grid-area: pasos; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+.padron__pasos > li { display: grid; gap: var(--s-3); align-content: start; padding-top: var(--s-4); border-top: 1px solid var(--c-linea); }
+.padron__num { font: 200 clamp(3rem, 2rem + 3vw, 4.5rem)/.85 var(--f-display); font-stretch: 125%; color: var(--c-negro); }
+.padron__pasos h3 { font: 800 var(--t-h3)/1.1 var(--f-display); font-stretch: 112%; text-transform: uppercase; }
+.padron__pasos p { font: 400 1rem/1.55 var(--f-texto); max-width: 34ch; }
+.padron__pasos .boton { justify-self: start; margin-top: var(--s-2); }
+.padron__aviso { grid-area: aviso; }
+.padron__sumarme { grid-area: sumar; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-4) var(--s-5);
+  padding: var(--s-5) 0 0; border-top: 2px solid var(--c-negro); }
+.padron__sumarme p { font: 700 1.25rem/1.2 var(--f-display); font-stretch: 108%; }
+.padron__foto { grid-area: foto; align-self: stretch; min-height: 420px; }
+.padron__velo { position: absolute; left: 0; right: 34%; top: 40%; bottom: 0; background: var(--c-azul); mix-blend-mode: multiply; }
+.padron__linea { position: absolute; top: -24px; bottom: -24px; right: calc((100% - 72px) / 3 + 24px + 2px); width: 1px; background: var(--c-azul); pointer-events: none; }
+.padron__circulo { right: -22px; top: -22px; width: 64px; height: 64px; }
+
+/* entrada única: las formas aparecen al cargar (sin efectos al hacer scroll) */
+@media (prefers-reduced-motion: no-preference) {
+  .noticia-principal__tri, .padron__circulo { animation: entra-der 700ms var(--ease) both 200ms; }
+}
+
+/* tablet */
+@media (max-width: 1023px) {
+  main > section.seccion[id] { padding: var(--s-9) 0; }
+  .noticia-principal, .noticias__lista { grid-column: 1 / -1; }
+  .padron { grid-template-areas: "pasos" "aviso" "sumar" "foto"; grid-template-columns: minmax(0, 1fr); }
+  .padron__foto { min-height: 0; aspect-ratio: 16 / 9; }
+  .padron__linea { display: none; }
+  .padron__circulo { top: auto; bottom: -22px; right: 16px; }
+}
+/* celular */
+@media (max-width: 639px) {
+  main > section.seccion[id] { padding: var(--s-8) 0; }
+  .seccion__cabeza { column-gap: var(--s-4); margin-bottom: var(--s-6); }
+  .noticia-principal__tri { width: 48px; height: 56px; left: -8px; bottom: 10%; }
+  .padron__pasos { grid-template-columns: minmax(0, 1fr); }
+  .padron__foto { aspect-ratio: 4 / 3; }
+  .padron__sumarme .boton { flex: 1 1 100%; }
 }

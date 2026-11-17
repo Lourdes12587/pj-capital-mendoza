@@ -43,38 +43,5 @@ window.API = (function () {
     return { ok: true };
   }
 
-  /** Guarda una respuesta de la encuesta a vecinos. */
-  async function enviarEncuesta(respuesta) {
-    if (USE_BACKEND) {
-      const res = await fetch(`${API_URL}/encuestas`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(respuesta)
-      });
-      if (!res.ok) throw new Error("No se pudo enviar la encuesta");
-      return res.json();
-    }
-    await delay(400);
-    const lista = readLocal("pj_encuestas");
-    lista.push(respuesta);
-    writeLocal("pj_encuestas", lista);
-    return { ok: true };
-  }
-
-  /** Devuelve el resultado agregado: { total, preocupaciones: { clave: cantidad } } (solo respuestas reales). */
-  async function resultadosEncuesta() {
-    if (USE_BACKEND) {
-      const res = await fetch(`${API_URL}/encuestas/resultados`);
-      if (!res.ok) throw new Error("No se pudieron cargar los resultados");
-      return res.json();
-    }
-    const out = { total: 0, preocupaciones: {} };
-    readLocal("pj_encuestas").forEach((r) => {
-      out.total++;
-      (r.preocupaciones || []).forEach((k) => { out.preocupaciones[k] = (out.preocupaciones[k] || 0) + 1; });
-    });
-    return out;
-  }
-
-  return { enviarPreafiliacion, enviarEncuesta, resultadosEncuesta };
+  return { enviarPreafiliacion };
 })();

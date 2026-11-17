@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>PJ Capital: el Partido Justicialista de la Ciudad de Mendoza</title>
-<meta name="description" content="Preafiliación online, consultas oficiales del padrón, encuesta vecinal y teléfonos útiles para las 12 secciones de la Capital mendocina.">
+<meta name="description" content="Preafiliación online y consultas oficiales del padrón para las 12 secciones de la Capital mendocina.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="PJ Capital: el Partido Justicialista de la Ciudad de Mendoza">
-<meta property="og:description" content="Preafiliación online, consultas del padrón, encuesta vecinal y teléfonos útiles de la Capital.">
+<meta property="og:description" content="Preafiliación online y consultas oficiales del padrón de la Capital.">
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -64,8 +64,7 @@
     <nav class="cabecera__nav" id="menu-principal" aria-label="Principal">
       <a href="#noticias">Noticias</a>
       <a href="#padron">Padrón</a>
-      <a href="#encuesta">Encuesta</a>
-      <a href="#telefonos">Teléfonos</a>
+      <a href="#habitantes">Habitantes</a>
       <a href="#comision">Comisión</a>
       <a class="cabecera__solo-celular" href="#preafiliacion">Sumarme al PJ</a>
     </nav>
@@ -81,7 +80,7 @@
   <section class="portada papel" aria-labelledby="hero-h">
     <div class="portada__grilla">
       <div class="portada__texto">
-        <p class="etiqueta portada__aviso">Encuesta vecinal abierta: 5 preguntas</p>
+        <p class="etiqueta portada__aviso">Preafiliación abierta</p>
         <h1 id="hero-h"><span>Partido</span><span>Justicialista</span><span class="portada__lugar">Capital · Mendoza</span></h1>
         <p class="portada__bajada">Dejá tus datos para sumarte, consultá el padrón oficial y seguí el trabajo del partido en las 12 secciones de la Ciudad de Mendoza.</p>
         <div class="portada__acciones">
@@ -107,65 +106,89 @@
     </div>
   </section>
 
-  <!-- 2. NOTICIAS -->
-  <section class="section" id="noticias" style="--hm: 2" aria-labelledby="noticias-h">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="noticias-h">Noticias del PJ Capital. <span class="muted">Lo nuevo en el partido y en el sitio.</span></h2>
-      </div>
-      <div class="grid news">
-        <a class="card card--open news__card span-4" href="#preafiliacion">
-          <div class="panel panel--top news__pic"><img class="frame__img" src="assets/img/photo-f44342714-960.jpg" width="960" height="640" alt="La peatonal Sarmiento con sus árboles y una pérgola" loading="lazy" decoding="async" data-source="stand-in" data-subject="Peatonal Sarmiento, Ciudad de Mendoza"></div>
-          <p class="t-label muted"><time datetime="2026-11-17">17 de noviembre de 2026</time></p>
-          <h3>Abre la preafiliación online</h3>
-          <p>Cualquier vecino de la Capital puede dejar sus datos desde el celular y el partido lo contacta para afiliarse.</p>
-        </a>
-        <a class="card card--open news__card span-4" href="#encuesta">
-          <div class="panel panel--top news__pic"><img class="frame__img" src="assets/img/photo-f854444-960.jpg" width="960" height="720" alt="Fuente de azulejos en la Plaza Sarmiento" loading="lazy" decoding="async" data-source="stand-in" data-subject="Plaza Sarmiento, Ciudad de Mendoza"></div>
-          <p class="t-label muted"><time datetime="2026-11-17">17 de noviembre de 2026</time></p>
-          <h3>Lanzamos la encuesta vecinal por sección</h3>
-          <p>Cinco preguntas para saber qué preocupa en cada barrio: inseguridad, sueldos, salud, la justicia y más.</p>
-        </a>
-        <a class="card card--open news__card span-4" href="#telefonos">
-          <div class="panel panel--top news__pic"><img class="frame__img" src="assets/img/photo-f26802902-960.jpg" width="960" height="582" alt="Fuente y murales de la Plaza Independencia" loading="lazy" decoding="async" data-source="stand-in" data-subject="Plaza Independencia, Ciudad de Mendoza"></div>
-          <p class="t-label muted"><time datetime="2026-11-17">17 de noviembre de 2026</time></p>
-          <h3>Reunimos los teléfonos útiles de la Capital</h3>
-          <p>Emergencias, la Línea 144, ANSES, PAMI y salud en un solo lugar, para llamar con un toque.</p>
-        </a>
+  <!-- 2. NOTICIAS: una noticia principal grande y una lista con líneas finas (no tarjetas iguales).
+       PENDIENTE: noticias reales del partido (las actuales cuentan novedades del sitio). -->
+  <section class="seccion" id="noticias" aria-labelledby="noticias-h">
+    <div class="contenedor">
+      <header class="seccion__cabeza">
+        <span class="seccion__num" aria-hidden="true">01</span>
+        <h2 id="noticias-h">Noticias</h2>
+      </header>
+      <div class="noticias">
+        <article class="noticia-principal">
+          <a class="noticia-principal__enlace" href="#preafiliacion">
+            <div class="noticia-principal__media">
+              <figure class="foto noticia-principal__foto">
+                <img src="assets/img/photo-f44342714-960.jpg" width="960" height="640" alt="La peatonal Sarmiento, en el centro de la Ciudad de Mendoza" loading="lazy" decoding="async">
+              </figure>
+              <span class="forma forma--tri-der noticia-principal__tri" aria-hidden="true"></span>
+            </div>
+            <p class="etiqueta">Afiliación</p>
+            <h3>Abrió la preafiliación online del PJ Capital</h3>
+            <p>Cualquier vecino de la Ciudad de Mendoza puede dejar sus datos desde el celular. El partido se comunica para completar la afiliación oficial.</p>
+            <span class="noticia__mas">Ir a la preafiliación</span>
+          </a>
+        </article>
+        <ul class="noticias__lista">
+          <li>
+            <a href="#padron">
+              <p class="etiqueta">Padrón</p>
+              <h3>Dónde consultar el padrón y tu afiliación</h3>
+              <p>Las consultas se hacen en los sitios oficiales de la Justicia Electoral. Te dejamos los enlaces.</p>
+            </a>
+          </li>
+          <li>
+            <a href="#habitantes">
+              <p class="etiqueta">Territorio</p>
+              <h3>Las 12 secciones de la Capital, en un mapa</h3>
+              <p>Ubicá tu sección y conocé cómo se organiza la ciudad.</p>
+            </a>
+          </li>
+          <li class="noticias__pendiente">
+            <p class="etiqueta pendiente">PENDIENTE: noticias del partido</p>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- 3. PADRÓN (banda celeste, 1 de 2): solo información y enlaces a las consultas OFICIALES.
+  <!-- 3. PADRÓN: solo información y enlaces a las consultas OFICIALES.
        Este sitio no guarda ni muestra datos de padrón propios (CLAUDE.md, sección 4). -->
-  <section class="section ground-surface" id="padron" style="--hm: 2" aria-labelledby="padron-h">
-    <div class="wrap">
-      <div class="grid grid--top fill">
-        <div class="span-6 stack-4">
-          <div class="section-head">
-            <h2 id="padron-h">Padrón: consultas oficiales</h2>
-            <p>Este sitio no guarda datos del padrón. Para saber dónde votás o si figurás como afiliado/a, usá las consultas oficiales.</p>
-          </div>
-          <ul class="rows padron-links">
-            <li>
-              <span class="rows__name">¿Dónde voto?</span>
-              <p>Tu escuela y mesa para votar, según el padrón electoral oficial.</p>
-              <!-- PENDIENTE: URL oficial de la consulta de padrón electoral (Cámara Nacional Electoral / Justicia Electoral). No inventar. -->
-              <a class="btn btn--secondary padron-links__btn" href="PENDIENTE_URL_OFICIAL">Consultar dónde voto</a>
-            </li>
-            <li>
-              <span class="rows__name">¿Estoy afiliado/a?</span>
-              <p>Si figurás en el registro oficial de afiliados a partidos políticos.</p>
-              <!-- PENDIENTE: URL oficial de la consulta de afiliación partidaria (Justicia Electoral). No inventar. -->
-              <a class="btn btn--secondary padron-links__btn" href="PENDIENTE_URL_OFICIAL">Consultar mi afiliación</a>
-            </li>
-          </ul>
-          <p class="t-small pendiente">PENDIENTE: enlaces oficiales de consulta.</p>
-          <div class="btn-row"><a class="btn btn--primary" href="#preafiliacion">Quiero sumarme</a></div>
+  <section class="seccion papel" id="padron" aria-labelledby="padron-h">
+    <div class="contenedor">
+      <header class="seccion__cabeza">
+        <span class="seccion__num" aria-hidden="true">02</span>
+        <h2 id="padron-h">Padrón</h2>
+        <p class="seccion__bajada">Este sitio no guarda datos del padrón. Para saber dónde votás o si figurás como afiliado/a, usá las consultas oficiales.</p>
+      </header>
+      <div class="padron">
+        <ol class="padron__pasos">
+          <li>
+            <span class="padron__num" aria-hidden="true">01</span>
+            <h3>¿Dónde voto?</h3>
+            <p>Tu escuela y mesa para votar, según el padrón electoral oficial.</p>
+            <!-- PENDIENTE: URL oficial de la consulta de padrón electoral (Cámara Nacional Electoral / Justicia Electoral). No inventar. -->
+            <a class="boton boton--secundario" href="PENDIENTE_URL_OFICIAL">Consultar dónde voto</a>
+          </li>
+          <li>
+            <span class="padron__num" aria-hidden="true">02</span>
+            <h3>¿Estoy afiliado/a?</h3>
+            <p>Si figurás en el registro oficial de afiliados a partidos políticos.</p>
+            <!-- PENDIENTE: URL oficial de la consulta de afiliación partidaria (Justicia Electoral). No inventar. -->
+            <a class="boton boton--secundario" href="PENDIENTE_URL_OFICIAL">Consultar mi afiliación</a>
+          </li>
+        </ol>
+        <p class="etiqueta pendiente padron__aviso">PENDIENTE: enlaces oficiales de consulta.</p>
+        <div class="padron__sumarme">
+          <p>¿Todavía no estás afiliado/a?</p>
+          <a class="boton boton--primario" href="#preafiliacion">Quiero sumarme <span class="boton__flecha" aria-hidden="true"></span></a>
         </div>
-        <div class="frame frame--photo frame--fill span-6 start-7">
-          <img class="frame__img" src="assets/img/photo-f2712274-960.jpg" width="960" height="720" alt="Fuente y jardines de la Plaza España, Ciudad de Mendoza" loading="lazy" decoding="async" data-source="stand-in" data-subject="Plaza España, Ciudad de Mendoza">
-        </div>
+        <figure class="foto padron__foto" aria-hidden="true">
+          <img src="assets/img/photo-f2712274-960.jpg" width="960" height="720" alt="" loading="lazy" decoding="async">
+          <span class="padron__velo"></span>
+        </figure>
+        <span class="padron__linea" aria-hidden="true"></span>
+        <span class="forma forma--circulo padron__circulo" aria-hidden="true"></span>
       </div>
     </div>
   </section>
@@ -199,39 +222,6 @@
     <div class="wrap">
       <p class="t-label">Las tres banderas</p>
       <p class="mo-wh__text">Justicia social, independencia económica y soberanía política: las tres banderas del peronismo guían el trabajo del partido en <strong>cada sección de la Capital</strong>.</p>
-    </div>
-  </section>
-
-  <!-- 6. ENCUESTA VECINAL -->
-  <section class="section" id="encuesta" style="--hm: 2" aria-labelledby="encuesta-h">
-    <div class="wrap">
-      <div class="section-head">
-        <h2 id="encuesta-h">Encuesta vecinal. <span class="muted">Qué le preocupa a la Capital.</span></h2>
-      </div>
-      <div class="grid grid--top">
-        <div class="span-6 survey" id="survey">
-          <noscript><p>La encuesta necesita JavaScript activado.</p></noscript>
-        </div>
-        <div class="span-6 start-7 results">
-          <div class="results__head"><h3>Lo que más preocupa</h3><span class="t-small muted" id="results-total"></span></div>
-          <ol class="results__list" id="results"></ol>
-          <p class="t-small muted">Porcentaje de vecinos que eligió cada tema; cada uno elige hasta 3.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. TELÉFONOS ÚTILES (dos pantallas) -->
-  <section class="section g2" id="telefonos" aria-labelledby="telefonos-h">
-    <div class="wrap">
-      <div class="group">
-        <div class="section-head">
-          <h2 id="telefonos-h">Teléfonos útiles de la Capital. <span class="muted">Tocá el número para llamar.</span></h2>
-        </div>
-        <div class="grid sos" id="sos"></div>
-        <div class="grid grid--top tel-cols" id="tel-a"></div>
-      </div>
-      <div class="grid grid--top tel-cols" id="tel-b"></div>
     </div>
   </section>
 
@@ -352,7 +342,7 @@
         </div>
         <div class="span-2 footer__col"><h3>Partido</h3><ul><li><a href="#noticias">Noticias</a></li><li><a href="#comision">Comisión</a></li><li><a href="#banderas">Banderas</a></li></ul></div>
         <div class="span-2 footer__col"><h3>Afiliados</h3><ul><li><a href="#padron">Padrón</a></li><li><a href="#pasos">Cómo preafiliarse</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>Vecinos</h3><ul><li><a href="#encuesta">Encuesta</a></li><li><a href="#telefonos">Teléfonos</a></li><li><a href="#habitantes">Habitantes</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Vecinos</h3><ul><li><a href="#habitantes">Habitantes</a></li></ul></div>
       </div>
       <div class="footer__legal">
         <span>&copy; 2026 PJ Capital Mendoza</span>
@@ -362,16 +352,6 @@
     </div>
   </div>
 </footer>
-
-<!-- invitación a la encuesta para cada visitante nuevo (pedido del partido) -->
-<dialog class="invite" id="invite" aria-labelledby="invite-h">
-  <h2 id="invite-h">Encuesta vecinal del PJ Capital</h2>
-  <p>Contanos qué le preocupa a tu barrio: 5 preguntas, menos de un minuto y anónima.</p>
-  <div class="btn-row">
-    <a class="btn btn--primary" href="#encuesta" id="invite-go">Responder la encuesta</a>
-    <button class="btn btn--secondary" type="button" id="invite-close">Ahora no</button>
-  </div>
-</dialog>
 
 <script src="js/data.js"></script>
 <script src="js/api.js"></script>

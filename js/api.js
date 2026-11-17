@@ -1,8 +1,9 @@
 /* =========================================================
    CAPA DE DATOS
-   Hoy: funciona sin servidor (datos locales + localStorage).
+   Hoy: funciona sin servidor (localStorage del navegador).
    Mañana: cambiar USE_BACKEND a true y apuntar API_URL al
    backend; el resto del sitio no necesita cambios.
+   El padrón NO pasa por acá: solo se enlaza a las consultas oficiales.
    ========================================================= */
 
 window.API = (function () {
@@ -18,45 +19,28 @@ window.API = (function () {
     try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* sin almacenamiento */ }
   }
 
-  /** Busca en el padrón por DNI exacto o por apellido. */
-  async function buscarPadron(query) {
-    const q = String(query).trim();
-    if (USE_BACKEND) {
-      const res = await fetch(`${API_URL}/padron?q=${encodeURIComponent(q)}`);
-      if (!res.ok) throw new Error("No se pudo consultar el padrón");
-      return res.json();
-    }
-    await delay(350);
-    const norm = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
-    const digits = q.replace(/\D/g, "");
-    return window.SITE_DATA.padron.filter((p) =>
-      digits.length >= 7 ? p.dni === digits : norm(p.apellido).includes(norm(q))
-    );
-  }
-
   /**
-   * Envía una solicitud de afiliación.
-   * data = { nombre, apellido, dni, calle, depto, barrio, seccion, firma (PNG dataURL), aceptoAcuerdo, fecha }
+   * Envía una preafiliación (no es la afiliación oficial: el partido contacta a la persona).
+   * data = { nombre, apellido, dni, telefono, email (opcional, "" si no hay), seccion, consentimiento, fecha }
    */
-  async function enviarAfiliacion(data) {
+  async function enviarPreafiliacion(data) {
     if (USE_BACKEND) {
-      const res = await fetch(`${API_URL}/afiliaciones`, {
+      const res = await fetch(`${API_URL}/preafiliaciones`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
-      if (!res.ok) throw new Error((await res.text()) || "No se pudo enviar la solicitud");
+      if (!res.ok) throw new Error((await res.text()) || "No se pudo enviar la preafiliación.");
       return res.json();
     }
-    await delay(700);
-    const lista = readLocal("pj_afiliaciones");
+    await delay(500);
+    const lista = readLocal("pj_preafiliaciones");
     if (lista.some((a) => a.dni === data.dni)) {
-      throw new Error("Ya existe una solicitud de afiliación con ese DNI.");
+      throw new Error("Ya hay una preafiliación con ese DNI.");
     }
-    const tramite = "PJC-" + Date.now().toString(36).toUpperCase();
-    lista.push({ ...data, tramite });
-    writeLocal("pj_afiliaciones", lista);
-    return { ok: true, tramite };
+    lista.push(data);
+    writeLocal("pj_preafiliaciones", lista);
+    return { ok: true };
   }
 
   /** Guarda una respuesta de la encuesta a vecinos. */
@@ -77,15 +61,14 @@ window.API = (function () {
     return { ok: true };
   }
 
-  /** Devuelve el resultado agregado: { total, preocupaciones: { clave: cantidad } } */
+  /** Devuelve el resultado agregado: { total, preocupaciones: { clave: cantidad } } (solo respuestas reales). */
   async function resultadosEncuesta() {
     if (USE_BACKEND) {
       const res = await fetch(`${API_URL}/encuestas/resultados`);
       if (!res.ok) throw new Error("No se pudieron cargar los resultados");
       return res.json();
     }
-    const base = window.SITE_DATA.encuesta.resultadosDemo;
-    const out = { total: base.total, preocupaciones: { ...base.preocupaciones } };
+    const out = { total: 0, preocupaciones: {} };
     readLocal("pj_encuestas").forEach((r) => {
       out.total++;
       (r.preocupaciones || []).forEach((k) => { out.preocupaciones[k] = (out.preocupaciones[k] || 0) + 1; });
@@ -93,5 +76,5 @@ window.API = (function () {
     return out;
   }
 
-  return { buscarPadron, enviarAfiliacion, enviarEncuesta, resultadosEncuesta };
+  return { enviarPreafiliacion, enviarEncuesta, resultadosEncuesta };
 })();

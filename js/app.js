@@ -1,4 +1,4 @@
-/* PJ Capital: lógica de la página (padrón, mapa, encuesta, teléfonos, comisión, afiliación).
+/* PJ Capital: lógica de la página (mapa, encuesta, teléfonos, comisión, preafiliación).
    Navegación, botones, formularios y animaciones los maneja el kit (assets/system.js, motion.js). */
 (function () {
   "use strict";
@@ -13,38 +13,18 @@
   };
   const seccion = (n) => D.secciones.find((s) => s.n === n);
 
-  /* ---------------- Padrón ---------------- */
-  const pForm = $("#padron-form");
-  const pInput = $("#padron-q");
-  const pErr = $("#padron-q-err");
-  const pOut = $("#padron-result");
-  pForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const q = pInput.value.trim();
-    if (q.length < 3) { pInput.setAttribute("aria-invalid", "true"); pErr.hidden = false; pInput.focus(); return; }
-    pInput.removeAttribute("aria-invalid"); pErr.hidden = true;
-    pOut.innerHTML = `<p class="t-small muted">Buscando…</p>`;
-    try {
-      const res = await window.API.buscarPadron(q);
-      if (!res.length) {
-        pOut.innerHTML = `<p>No encontramos a nadie con “${esc(q)}” en el padrón. <a class="link" href="#afiliacion">Completar la ficha de afiliación</a></p>`;
-        return;
-      }
-      pOut.innerHTML = `<ul class="rows">${res.map((p) => `
-        <li><span class="rows__name">${esc(p.apellido)}, ${esc(p.nombre)}</span>
-          <span class="rows__value">DNI ${esc(p.dni.replace(/\B(?=(\d{3})+(?!\d))/g, "."))}</span>
-          <p>${p.seccion}.ª sección, ${esc((seccion(p.seccion) || {}).nombre || "")}. Vota en ${esc(p.escuela)}, mesa ${p.mesa}.</p></li>`).join("")}</ul>`;
-    } catch (err) {
-      pOut.innerHTML = `<p>${esc(err.message)}</p>`;
-    }
-  });
-
   /* ---------------- Habitantes: mapa y lista ---------------- */
   const svg = $("#mapa");
   const NS = "http://www.w3.org/2000/svg";
-  const total = D.secciones.reduce((a, s) => a + s.habitantes, 0);
-  const max = Math.max(...D.secciones.map((s) => s.habitantes));
-  const min = Math.min(...D.secciones.map((s) => s.habitantes));
+  // cifras de población: null = "Dato pendiente" (no se inventan). La escala de color vuelve sola
+  // cuando las 12 secciones tengan su cifra oficial.
+  const PEND = "Dato pendiente";
+  const cifra = (h) => (typeof h === "number" ? `${fmt.format(h)} habitantes` : PEND);
+  const completos = D.secciones.every((s) => typeof s.habitantes === "number");
+  const total = completos ? D.secciones.reduce((a, s) => a + s.habitantes, 0) : null;
+  const vals = completos ? D.secciones.map((s) => s.habitantes) : [];
+  const max = completos ? Math.max(...vals) : 0;
+  const min = completos ? Math.min(...vals) : 0;
   const level = (h) => Math.min(4, Math.floor(((h - min) / (max - min || 1)) * 5));
   const rowsEl = $("#census-rows");
 
@@ -53,8 +33,8 @@
     g.setAttribute("class", "sec");
     g.setAttribute("tabindex", "0");
     g.setAttribute("role", "button");
-    g.setAttribute("aria-label", `${s.n}.ª sección, ${s.nombre}: ${fmt.format(s.habitantes)} habitantes`);
-    g.dataset.n = s.n; g.dataset.level = level(s.habitantes);
+    g.setAttribute("aria-label", `${s.n}.ª sección, ${s.nombre}: ${cifra(s.habitantes)}`);
+    g.dataset.n = s.n; g.dataset.level = completos ? level(s.habitantes) : "pend";
     const p = document.createElementNS(NS, "path"); p.setAttribute("d", s.path); g.appendChild(p);
     const t = document.createElementNS(NS, "text");
     t.setAttribute("x", s.label[0]); t.setAttribute("y", s.label[1] + 6); t.textContent = s.n; g.appendChild(t);
@@ -63,7 +43,7 @@
     svg.appendChild(g);
   });
   rowsEl.innerHTML = [...D.secciones].sort((a, b) => a.n - b.n).map((s) =>
-    `<li><button type="button" data-n="${s.n}"><span>${s.n}.ª ${esc(s.nombre)}</span><span>${fmt.format(s.habitantes)}</span></button></li>`).join("");
+    `<li><button type="button" data-n="${s.n}"><span>${s.n}.ª ${esc(s.nombre)}</span><span>${typeof s.habitantes === "number" ? fmt.format(s.habitantes) : PEND}</span></button></li>`).join("");
   rowsEl.addEventListener("click", (e) => { const b = e.target.closest("[data-n]"); if (b) pick(Number(b.dataset.n)); });
 
   function pick(n) {
@@ -71,10 +51,14 @@
     svg.querySelectorAll(".sec").forEach((g) => g.classList.toggle("is-on", Number(g.dataset.n) === n));
     rowsEl.querySelectorAll("[data-n]").forEach((b) => b.setAttribute("aria-pressed", Number(b.dataset.n) === n));
     $("#census-name").textContent = `${s.n}.ª sección · ${s.nombre}`;
-    $("#census-num").textContent = `${fmt.format(s.habitantes)} habitantes`;
-    $("#census-share").textContent = `${((s.habitantes / total) * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 })} % de los ${fmt.format(total)} vecinos de la Capital`;
+    $("#census-num").textContent = cifra(s.habitantes);
+    $("#census-share").textContent = typeof s.habitantes === "number" && total
+      ? `${((s.habitantes / total) * 100).toLocaleString("es-AR", { maximumFractionDigits: 1 })} % de los ${fmt.format(total)} vecinos de la Capital`
+      : `Fuente: ${s.fuente || "PENDIENTE"}`;
   }
-  $("#census-num").textContent = `${fmt.format(total)} habitantes`;
+  $("#census-num").textContent = total ? `${fmt.format(total)} habitantes` : PEND;
+  if (!completos) $("#census-share").textContent = "Fuente: PENDIENTE";
+  document.querySelector(".census__legend")?.toggleAttribute("hidden", !completos);
 
   /* ---------------- Encuesta vecinal (en la página) ---------------- */
   const ENC = D.encuesta;
@@ -87,7 +71,8 @@
     const r = await window.API.resultadosEncuesta();
     const items = Object.entries(r.preocupaciones).filter(([k]) => etiqueta[k]).sort((a, b) => b[1] - a[1]);
     const top = items.length ? items[0][1] : 1;
-    $("#results-total").textContent = `${fmt.format(r.total)} respuestas`;
+    $("#results-total").textContent = r.total === 1 ? "1 respuesta" : `${fmt.format(r.total)} respuestas`;
+    if (!r.total) { $("#results").innerHTML = `<li class="results__empty">Todavía no hay respuestas. La tuya puede ser la primera.</li>`; return items; }
     $("#results").innerHTML = items.slice(0, 8).map(([k, n]) => `
       <li><span class="results__name">${esc(etiqueta[k].t)}</span><span class="results__pct">${Math.round((n / r.total) * 100)} %</span>
         <span class="results__bar" aria-hidden="true"><span style="width:${(n / top) * 100}%"></span></span></li>`).join("");
@@ -165,7 +150,7 @@
       const pos = (k) => items.findIndex(([x]) => x === k) + 1;
       survey.innerHTML = `<div class="survey__card"><h3>Tu respuesta ya está en el ranking</h3>
         <ul class="rows">${(resp.preocupaciones || []).map((k) => `<li><span class="rows__name">${esc(etiqueta[k].t)}</span><span class="rows__value">puesto ${pos(k)}</span></li>`).join("")}</ul>
-        <p><a class="link" href="#afiliacion">Completar la ficha de afiliación</a></p></div>`;
+        <p><a class="link" href="#preafiliacion">Dejar mis datos para sumarme</a></p></div>`;
     } catch (err) {
       sayErr(err.message); act.disabled = false; act.textContent = "Enviar mis respuestas";
     }
@@ -202,75 +187,44 @@
 
   /* ---------------- Comisión partidaria ---------------- */
   $("#presidente-desc").textContent = D.presidente.descripcion;
-  const realName = (n) => n && !/^nombre apellido$/i.test(n.trim());
   $("#comision-rows").innerHTML = D.comision.map((m) =>
-    `<li><span class="rows__name">${esc(m.cargo)}</span>${realName(m.nombre) ? `<span class="rows__value">${esc(m.nombre)}</span>` : ""}</li>`).join("");
+    `<li><span class="rows__name">${esc(m.cargo)}</span><span class="rows__value">${esc(m.nombre)}</span></li>`).join("");
   // la foto real del presidente reemplaza a la de la Capital apenas se guarde en img/fernando-ortiz.jpg
   const foto = new Image();
   foto.onload = () => { const el = $("#presidente-foto"); el.src = foto.src; el.removeAttribute("srcset"); el.alt = "Fernando Ortiz, presidente del PJ Capital"; el.dataset.source = "client"; };
   foto.src = "img/fernando-ortiz.jpg";
 
-  /* ---------------- Ficha de afiliación ---------------- */
-  $("#acuerdo-texto").innerHTML = window.ACUERDO_HTML;
+  /* ---------------- Preafiliación ---------------- */
+  // la versión anterior guardaba afiliaciones con firma y domicilio en este navegador: se borran
+  try { localStorage.removeItem("pj_afiliaciones"); } catch { /* sin almacenamiento */ }
+
   const fSec = $("#f-seccion");
   D.secciones.forEach((s) => { const o = document.createElement("option"); o.value = s.n; o.textContent = `${s.n}.ª · ${s.nombre}`; fSec.appendChild(o); });
-  $("#f-dni").addEventListener("input", (e) => { e.target.value = e.target.value.replace(/\D/g, "").slice(0, 8); });
+  $("#f-dni").addEventListener("input", (e) => { e.target.value = e.target.value.replace(/D/g, "").slice(0, 8); });
 
-  // firma digital
-  const canvas = $("#firma");
-  const ctx = canvas.getContext("2d");
-  const hint = $("#firma-hint");
-  const firmaErr = $("#firma-err");
-  let drawing = false, signed = false, last = null;
-  function size() {
-    const r = canvas.getBoundingClientRect(); const k = window.devicePixelRatio || 1;
-    const prev = signed ? canvas.toDataURL() : null;
-    canvas.width = Math.max(1, r.width * k); canvas.height = Math.max(1, r.height * k);
-    ctx.setTransform(k, 0, 0, k, 0, 0);
-    ctx.lineWidth = 2.2; ctx.lineCap = "round"; ctx.lineJoin = "round";
-    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue("--p-ink").trim() || "#0f2440";
-    if (prev) { const im = new Image(); im.onload = () => ctx.drawImage(im, 0, 0, r.width, r.height); im.src = prev; }
-  }
-  const at = (e) => { const r = canvas.getBoundingClientRect(); return { x: e.clientX - r.left, y: e.clientY - r.top }; };
-  canvas.addEventListener("pointerdown", (e) => { drawing = true; last = at(e); canvas.setPointerCapture(e.pointerId); });
-  canvas.addEventListener("pointermove", (e) => {
-    if (!drawing) return;
-    const p = at(e);
-    ctx.beginPath(); ctx.moveTo(last.x, last.y); ctx.lineTo(p.x, p.y); ctx.stroke(); last = p;
-    if (!signed) { signed = true; hint.hidden = true; firmaErr.hidden = true; }
-  });
-  ["pointerup", "pointercancel"].forEach((ev) => canvas.addEventListener(ev, () => { drawing = false; }));
-  $("#firma-clear").addEventListener("click", () => { ctx.clearRect(0, 0, canvas.width, canvas.height); signed = false; hint.hidden = false; });
-  window.addEventListener("resize", size);
-  size();
-
-  // envío: system.js marca los campos; acá se valida la firma y se guarda la solicitud
-  const form = $("#afil-form");
-  const status = $("#afil-status");
-  const btn = $("#afil-submit");
+  // envío: system.js valida y marca cada campo; si todo está bien, se guarda vía api.js
+  const form = $("#pre-form");
+  const status = $("#pre-status");
+  const btn = $("#pre-submit");
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const fieldsOk = [...form.elements].filter((el) => el.matches("input, select")).every((el) => el.checkValidity());
-    if (!signed) { firmaErr.hidden = false; }
-    if (!fieldsOk || !signed) {
-      if (fieldsOk && !signed) { status.textContent = "Falta tu firma."; canvas.scrollIntoView({ block: "center" }); }
-      return;
-    }
+    const ok = [...form.elements].filter((el) => el.matches("input, select")).every((el) => el.checkValidity());
+    if (!ok) return;
     const v = (id) => $("#" + id).value.trim();
     btn.disabled = true;
     const wait = setTimeout(() => { status.textContent = "Enviando"; }, 300);
     try {
-      const res = await window.API.enviarAfiliacion({
-        nombre: v("f-nombre"), apellido: v("f-apellido"), dni: v("f-dni"), calle: v("f-calle"),
-        seccion: Number(v("f-seccion")), localidad: "Ciudad de Mendoza",
-        firma: canvas.toDataURL("image/png"), aceptoAcuerdo: true, fecha: new Date().toISOString()
+      await window.API.enviarPreafiliacion({
+        nombre: v("f-nombre"), apellido: v("f-apellido"), dni: v("f-dni"),
+        telefono: v("f-telefono"), email: v("f-email"), seccion: Number(v("f-seccion")),
+        consentimiento: $("#f-consentimiento").checked, fecha: new Date().toISOString()
       });
       clearTimeout(wait);
-      form.reset(); $("#firma-clear").click();
-      status.textContent = `Tu solicitud de afiliación está enviada. Número de trámite: ${res.tramite}.`;
+      form.reset();
+      status.textContent = "Recibimos tu preafiliación. El partido se va a comunicar con vos para completar la afiliación oficial.";
     } catch (err) {
       clearTimeout(wait);
-      status.textContent = `No se envió: ${err.message} Tus datos siguen en la ficha.`;
+      status.textContent = `No se envió: ${err.message} Tus datos siguen en el formulario.`;
     } finally { btn.disabled = false; }
   });
 })();

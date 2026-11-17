@@ -7,9 +7,11 @@
 .news__card { color: inherit; text-decoration: none; display: grid; gap: var(--s-3); align-content: start; }
 .news__card h3 { margin: 0; }
 
-/* padrón */
-.padron-search { display: grid; gap: var(--s-4); max-width: 480px; }
-.padron-result .rows { margin-top: var(--s-2); }
+/* padrón: solo enlaces a las consultas oficiales */
+.padron-links > li { grid-template-columns: minmax(0, 1fr); }
+.padron-links__btn { justify-self: start; margin-top: var(--s-2); }
+/* marcador visible de dato faltante (regla del CLAUDE.md: "PENDIENTE: ...") */
+.pendiente { color: var(--error, #a3261b); font-weight: 500; }
 
 /* habitantes: el mapa de las secciones */
 .census__map { display: grid; gap: var(--s-4); }
@@ -25,6 +27,9 @@
 .sec[data-level="3"] text, .sec[data-level="4"] text { fill: var(--p-bg); }
 .sec:hover path, .sec:focus-visible path, .sec.is-on path { stroke: var(--p-ink); stroke-width: 4; }
 .sec:focus-visible path { stroke: var(--action); }
+/* sin cifras oficiales: todas las secciones en un mismo tono, sin escala */
+.sec[data-level="pend"] path { fill: color-mix(in oklab, var(--p-accent) 30%, var(--bg)); }
+.census__legend[hidden] { display: none; }
 .census__legend { display: flex; align-items: center; gap: var(--s-3); font-size: var(--t-label); color: var(--muted); }
 .census__ramp { flex: 0 0 120px; height: 8px; border-radius: 4px;
   background: linear-gradient(90deg, color-mix(in oklab, var(--p-accent) 18%, var(--bg)), var(--p-accent), var(--p-ink)); }
@@ -60,6 +65,7 @@
 .results__list li { display: grid; grid-template-columns: 1fr auto; gap: var(--s-2) var(--s-4); }
 .results__list .results__bar { grid-column: 1 / -1; }
 .results__pct { font-variant-numeric: tabular-nums; font-weight: 500; }
+.results__list .results__empty { display: block; color: var(--muted); }
 
 /* teléfonos útiles */
 .sos { margin-bottom: var(--s-7); }
@@ -74,29 +80,13 @@
 .rows__value.tel { font-variant-numeric: tabular-nums; color: var(--action); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 #tel-b { align-self: start; }
 
-/* ficha de afiliación */
-.agreement {
-  max-height: 520px; overflow: auto; padding: var(--s-5); border: 1px solid var(--line); border-radius: var(--r-md);
-  background: var(--bg); font-size: var(--t-body); line-height: 1.6;
-}
-.agreement h4 { font: 500 var(--t-card)/1.3 var(--font-text); margin: 0 0 var(--s-3); }
-.agreement ul { padding-left: 1.2em; }
-.agreement p:last-child { margin-bottom: 0; }
-.agreement .muted { font-size: var(--t-small); }
-.sign__label { font-size: var(--t-small); font-weight: 500; }
-.sign { position: relative; }
-#firma {
-  display: block; width: 100%; height: 160px; touch-action: none; cursor: crosshair;
-  border: 1px dashed var(--line-strong); border-radius: var(--r-sm); background: var(--bg);
-}
-.sign__hint { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; color: var(--muted); font-size: var(--t-small); }
-.sign__hint[hidden] { display: none; }
-.sign__row { display: flex; justify-content: flex-end; }
-.sign__clear { background: none; border: 0; padding: 0; font: inherit; font-size: var(--t-small); cursor: pointer; min-height: 44px; }
-.sign__clear::after { content: none; }
+/* preafiliación */
+.pre-info { display: grid; gap: var(--s-3); max-width: 56ch; }
+.pre-info h3 { font: 500 var(--t-card)/1.3 var(--font-text); margin: 0; }
+.pre-info p { margin: 0; }
 .check { display: flex; gap: var(--s-3); align-items: flex-start; font-weight: 400; font-size: var(--t-body); line-height: 1.5; cursor: pointer; }
 .check input { width: 22px; height: 22px; margin: 2px 0 0; flex: none; accent-color: var(--action); }
-.afil .btn-row .btn { width: 100%; }
+.pre .btn-row .btn { width: 100%; }
 
 /* comisión partidaria */
 .leader { display: grid; gap: var(--s-2); }
@@ -121,14 +111,12 @@
   .census__rows { grid-template-columns: minmax(0, 1fr); }
   .sos__tile { grid-column: span 6; padding: var(--s-4); }
   .sos__num { font-size: 32px; }
-  .agreement { max-height: 280px; }
 }
 
 /* ajustes de altura por pantalla (layout-v4: cada sección una o dos pantallas) */
 .news__pic { aspect-ratio: 16 / 9; }
 #comision .rows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--s-5); }
 #comision .rows > li:nth-child(2) { padding-top: 0; }
-.agreement { max-height: 440px; }
 @media (min-width: 640px) {
   #noticias .grid > .news__card { grid-column: auto / span 4; }
   .tel-cols > .tel-col { grid-column: auto / span 6; }

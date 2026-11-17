@@ -1,30 +1,38 @@
 # PJ Capital Mendoza
 
 Sitio institucional del Partido Justicialista de la Ciudad de Mendoza (frontend).
+Reglas del proyecto y decisiones: ver `CLAUDE.md`.
 
 ## Secciones
 
-- **Noticias** con filtros por categoría.
-- **Padrón**: búsqueda por DNI o apellido.
-- **Habitantes**: mapa de las 12 secciones de la Capital con la población de cada una.
-- **Tu voz**: encuesta a vecinos (se abre sola en la primera visita) y ranking de preocupaciones.
+- **Noticias**.
+- **Padrón**: solo información y enlaces a las consultas oficiales ("¿Dónde voto?", "¿Estoy afiliado/a?"). El sitio no guarda ni muestra datos de padrón.
+- **Habitantes**: mapa esquemático de las 12 secciones. Las cifras de población están pendientes ("Dato pendiente").
+- **Encuesta vecinal**: 5 preguntas, opcional y anónima. El ranking muestra solo respuestas reales.
 - **Teléfonos útiles**: emergencias, violencia de género, salud, jubilados y servicios.
-- **Comisión partidaria**: presidente e integrantes.
-- **Afiliación**: formulario con domicilio en Capital, firma digital y aceptación del acuerdo.
+- **Preafiliación**: nombre, apellido, DNI, teléfono, email (opcional), sección y consentimiento. No es la afiliación oficial: el partido contacta a la persona.
+- **Comisión partidaria**: presidente y cargos.
 
 ## Cómo verlo
 
-Abrir `index.html` en el navegador. No necesita instalación ni build.
+Necesita un servidor HTTP (los scripts del kit son módulos ES y no cargan con doble clic desde `file://`):
+
+```
+npx serve .
+# o
+python -m http.server 8080
+```
 
 ## Estructura
 
 ```
 index.html
-css/styles.css
-js/data.js   ← contenido editable (noticias, secciones, teléfonos, comisión, encuesta, padrón demo)
-js/api.js    ← capa de datos: hoy guarda en el navegador; con USE_BACKEND = true usa la API
-js/main.js   ← lógica de la página
-img/         ← fernando-ortiz.jpg (foto del presidente)
+css/page.css   ← estilos propios (lo que el kit no trae)
+js/data.js     ← contenido editable (secciones, teléfonos, encuesta, comisión)
+js/api.js      ← capa de datos: hoy guarda en el navegador; con USE_BACKEND = true usa la API
+js/app.js      ← lógica de la página
+assets/        ← kit de diseño (tasteskill) y fotos; no se edita
+img/           ← fernando-ortiz.jpg (foto del presidente)
 ```
 
 ## Backend (pendiente)
@@ -33,14 +41,14 @@ img/         ← fernando-ortiz.jpg (foto del presidente)
 
 | Método | Ruta | Uso |
 |---|---|---|
-| GET  | `/api/padron?q=` | Buscar en el padrón |
-| POST | `/api/afiliaciones` | Guardar una afiliación (incluye la firma en PNG) |
+| POST | `/api/preafiliaciones` | Guardar una preafiliación |
 | POST | `/api/encuestas` | Guardar una respuesta de la encuesta |
 | GET  | `/api/encuestas/resultados` | Ranking agregado |
 
-## Pendiente de contenido
+## Pendientes (marcados como PENDIENTE en el código)
 
-- Datos oficiales de habitantes por sección.
-- Números locales en Teléfonos útiles (Municipalidad, hospital, luz, agua, gas) y verificación de todos los números.
-- Biografía del presidente, integrantes de la comisión y noticias reales.
-- Revisión del acuerdo de adhesión por los apoderados.
+- URLs oficiales de "¿Dónde voto?" y "¿Estoy afiliado/a?" (`PENDIENTE_URL_OFICIAL` en `index.html`).
+- Texto legal de consentimiento de la preafiliación (Ley 25.326).
+- Población y fuente de cada sección (`js/data.js`).
+- Nombres de la comisión partidaria y foto del presidente.
+- Teléfonos locales (Municipalidad, hospital, luz, agua, gas) y verificación de todos los números.

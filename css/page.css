@@ -1,6 +1,6 @@
 /* PJ Capital: estilos base del mapa de Habitantes (el diseño editorial los ajusta en css/editorial.css). */
 
-/* marcador visible de dato faltante (regla del CLAUDE.md: "PENDIENTE: ...") */
+/* marcador visible de dato faltante ("PENDIENTE: ...") */
 .pendiente { color: var(--error, #a3261b); font-weight: 500; }
 
 /* habitantes: el mapa de las secciones */

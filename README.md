@@ -1,7 +1,6 @@
 # PJ Capital Mendoza
 
 Sitio institucional del Partido Justicialista de la Ciudad de Mendoza (frontend).
-Reglas del proyecto y decisiones: ver `CLAUDE.md`.
 
 ## Secciones
 

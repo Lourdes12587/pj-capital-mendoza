@@ -1,6 +1,6 @@
 /* =========================================================
    CONTENIDO DEL SITIO
-   Los datos que faltan están marcados como PENDIENTE (regla del CLAUDE.md:
+   Los datos que faltan están marcados como PENDIENTE (regla del proyecto:
    no inventar datos). Cuando exista el backend, estos datos vendrán de la API.
    ========================================================= */
 

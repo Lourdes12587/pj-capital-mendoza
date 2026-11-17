@@ -140,3 +140,21 @@
   .tel-col .rows > li { padding-block: var(--s-3); }
 }
 @media (min-width: 640px) and (max-width: 1023px) { .news__card > .news__pic { aspect-ratio: 4 / 5; } }
+
+/* logo del partido (img/logo-pj.png) en el menú y en el pie, en lugar de la marca del kit */
+.nav__logo .nav__logo-img { height: 44px; width: auto; flex: none; }
+@media (max-width: 639px) { .nav__logo .nav__logo-img { height: 34px; } }
+.closing .nav__logo .nav__logo-img { height: 56px; }
+
+/* portada: la bandera es una imagen chica (236 px de ancho). En escritorio ocupa el lado derecho
+   sobre azul marino, así se estira menos y el sol queda a la vista; el borde izquierdo se funde con el fondo. */
+@media (min-width: 1024px) {
+  .hero--photo { background: var(--p-ink); }
+  .hero--photo > .hero__bg { left: auto; right: 0; width: 60%;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%); }
+}
+/* celular: foto más baja y sin la línea de la encuesta, para que la portada entre en una pantalla */
+@media (max-width: 639px) {
+  .hero--photo { --photo: 30svh; }
+  .hero--photo .hero__kicker { display: none; }
+}

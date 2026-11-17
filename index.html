@@ -56,7 +56,7 @@
 <header class="nav nav--split">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">Saltar al contenido</a>
-    <a class="nav__logo" href="#top"><span class="mark" data-mark="dots" aria-hidden="true"></span>PJ Capital</a>
+    <a class="nav__logo" href="#top"><img class="nav__logo-img" src="img/logo-pj.png" alt="" width="40" height="40">PJ Capital</a>
     <nav class="nav__links" aria-label="Principal">
       <div class="nav__item"><a class="nav__link" href="#noticias">Noticias</a></div>
       <div class="nav__item"><a class="nav__link" href="#padron">Padrón</a></div>
@@ -74,23 +74,19 @@
 
 <main id="top">
 
-  <!-- 1. PORTADA (split) -->
-  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
-    <div class="wrap"><div class="hero-text grid hero__grid">
-      <div class="hero__text span-5">
+  <!-- 1. PORTADA (foto de fondo: la bandera argentina, aportada por el partido).
+       El texto va en el recuadro sólido del kit (hero--photo) para que se lea sobre la foto.
+       PENDIENTE: reemplazar img/bandera-argentina.jpg por una versión de al menos 1920 px de ancho. -->
+  <section class="hero hero--photo" data-enter data-calm="left" aria-labelledby="hero-h">
+    <img class="hero__bg" src="img/bandera-argentina.jpg" alt="" width="236" height="378" style="--ly-pos: 50% 52%; --ly-pos-phone: 50% 52%" fetchpriority="high" data-source="client" data-subject="Bandera argentina">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
         <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>Encuesta vecinal abierta: 5 preguntas</p>
         <h1 id="hero-h">Partido Justicialista de Capital, Mendoza</h1>
         <p class="hero__lead">Dejá tus datos para sumarte, consultá el padrón oficial y seguí el trabajo del partido en las 12 secciones de la Ciudad de Mendoza.</p>
         <div class="btn-row">
           <a class="btn btn--primary" href="#preafiliacion">Sumarme al PJ<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
           <a class="btn btn--secondary" href="#padron">Consultar el padrón</a>
-        </div>
-      </div>
-      <div class="hero__media span-6 start-7">
-        <img src="assets/img/photo-f85059868-960.jpg" srcset="assets/img/photo-f85059868-500.jpg 500w, assets/img/photo-f85059868-960.jpg 960w" sizes="(max-width: 639px) 100vw, 50vw" width="960" height="640" alt="Paseo arbolado de la Plaza Independencia, en el centro de la Ciudad de Mendoza" style="--ly-pos: 40% 50%" fetchpriority="high" data-source="stand-in" data-subject="Plaza Independencia, Ciudad de Mendoza">
-        <div class="ly-float">
-          <div class="ly-float__row"><span class="ly-live">Preafiliación</span><span>Online</span></div>
-          <div class="ly-float__title">Dejás tus datos y el partido te contacta</div>
         </div>
       </div>
     </div></div>
@@ -336,7 +332,7 @@
     <div class="closing__links">
       <div class="grid">
         <div class="span-4 stack-4">
-          <a class="nav__logo" href="#top"><span class="mark" data-mark="dots" aria-hidden="true"></span>PJ Capital</a>
+          <a class="nav__logo" href="#top"><img class="nav__logo-img" src="img/logo-pj.png" alt="" width="40" height="40">PJ Capital</a>
           <p class="footer__lede">Partido Justicialista de la Ciudad de Mendoza.</p>
         </div>
         <div class="span-2 footer__col"><h3>Partido</h3><ul><li><a href="#noticias">Noticias</a></li><li><a href="#comision">Comisión</a></li><li><a href="#banderas">Banderas</a></li></ul></div>

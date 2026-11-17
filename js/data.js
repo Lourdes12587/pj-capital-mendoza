@@ -84,32 +84,32 @@ window.SITE_DATA = {
      h24: atiende las 24 h · gratis: llamada gratuita · urgente: aparece en la franja de emergencias. */
   telefonos: [
     // Emergencias
-    { cat: "Emergencias", nombre: "Emergencias", tel: "911", desc: "Policía, emergencias médicas y rescate. Centro de emergencias de Mendoza.", h24: true, gratis: true, urgente: true },
+    { cat: "Emergencias", nombre: "Emergencias", tel: "911", desc: "Policía, emergencias médicas y rescate.", h24: true, gratis: true, urgente: true },
     { cat: "Emergencias", nombre: "Bomberos", tel: "100", desc: "Incendios, rescates y accidentes.", h24: true, gratis: true, urgente: true },
-    { cat: "Emergencias", nombre: "Emergencias médicas", tel: "107", desc: "Ambulancias. También podés llamar al 911.", h24: true, gratis: true, urgente: true },
-    { cat: "Emergencias", nombre: "Defensa Civil", tel: "103", desc: "Temporales, inundaciones, sismos y riesgos en la vía pública.", h24: true, gratis: true },
+    { cat: "Emergencias", nombre: "Emergencias médicas", tel: "107", desc: "Ambulancias. También sirve el 911.", h24: true, gratis: true, urgente: true },
+    { cat: "Emergencias", nombre: "Defensa Civil", tel: "103", desc: "Temporales, inundaciones y sismos.", h24: true, gratis: true },
 
     // Violencias y derechos
-    { cat: "Violencias y derechos", nombre: "Línea 144 · Violencia de género", tel: "144", desc: "Atención, contención y asesoramiento a personas en situación de violencia de género. Anónima y confidencial.", h24: true, gratis: true, urgente: true },
-    { cat: "Violencias y derechos", nombre: "Línea 102 · Niñas, niños y adolescentes", tel: "102", desc: "Para chicos y chicas que necesitan ayuda o para denunciar la vulneración de sus derechos.", h24: true, gratis: true },
-    { cat: "Violencias y derechos", nombre: "Línea 137 · Violencia familiar y sexual", tel: "137", desc: "Programa Las Víctimas contra las Violencias. Asistencia ante violencia familiar y abuso sexual.", h24: true, gratis: true },
-    { cat: "Violencias y derechos", nombre: "Línea 145 · Trata de personas", tel: "145", desc: "Denuncias anónimas de trata y explotación de personas.", h24: true, gratis: true },
+    { cat: "Violencias y derechos", nombre: "Línea 144 · Violencia de género", tel: "144", desc: "Atención y asesoramiento, anónima y confidencial.", h24: true, gratis: true, urgente: true },
+    { cat: "Violencias y derechos", nombre: "Línea 102 · Niñas, niños y adolescentes", tel: "102", desc: "Ayuda y denuncias por derechos de chicos y chicas.", h24: true, gratis: true },
+    { cat: "Violencias y derechos", nombre: "Línea 137 · Violencia familiar y sexual", tel: "137", desc: "Asistencia ante violencia familiar y abuso sexual.", h24: true, gratis: true },
+    { cat: "Violencias y derechos", nombre: "Línea 145 · Trata de personas", tel: "145", desc: "Denuncias anónimas de trata y explotación.", h24: true, gratis: true },
 
     // Salud
-    { cat: "Salud", nombre: "Salud Responde", tel: "0800-222-1002", desc: "Ministerio de Salud de la Nación: información y orientación en salud.", gratis: true },
-    { cat: "Salud", nombre: "Línea 141 · Consumos problemáticos", tel: "141", desc: "SEDRONAR: orientación y acompañamiento por consumo de alcohol y otras drogas.", h24: true, gratis: true },
-    { cat: "Salud", nombre: "Asistencia al suicida", tel: "135", desc: "Centro de Asistencia al Suicida. Desde todo el país: (011) 5275-1135.", h24: true, gratis: true },
+    { cat: "Salud", nombre: "Salud Responde", tel: "0800-222-1002", desc: "Orientación del Ministerio de Salud de la Nación.", gratis: true },
+    { cat: "Salud", nombre: "Línea 141 · Consumos problemáticos", tel: "141", desc: "SEDRONAR: alcohol y otras drogas.", h24: true, gratis: true },
+    { cat: "Salud", nombre: "Asistencia al suicida", tel: "135", desc: "Desde todo el país: (011) 5275-1135.", h24: true, gratis: true },
 
     // Jubilados y trámites
-    { cat: "Jubilados y trámites", nombre: "ANSES", tel: "130", desc: "Jubilaciones, pensiones, AUH, asignaciones y turnos.", gratis: true },
-    { cat: "Jubilados y trámites", nombre: "PAMI Escucha", tel: "138", desc: "Atención a afiliados de PAMI: médicos de cabecera, remedios y trámites.", h24: true, gratis: true },
-    { cat: "Jubilados y trámites", nombre: "Defensa del Consumidor (Nación)", tel: "0800-666-1518", desc: "Reclamos por abusos en compras, servicios y contratos.", gratis: true },
+    { cat: "Jubilados y trámites", nombre: "ANSES", tel: "130", desc: "Jubilaciones, pensiones, AUH y turnos.", gratis: true },
+    { cat: "Jubilados y trámites", nombre: "PAMI Escucha", tel: "138", desc: "Médicos de cabecera, remedios y trámites.", h24: true, gratis: true },
+    { cat: "Jubilados y trámites", nombre: "Defensa del Consumidor (Nación)", tel: "0800-666-1518", desc: "Reclamos por compras, servicios y contratos.", gratis: true },
 
     // Municipio y servicios — COMPLETAR con los números oficiales vigentes
-    { cat: "Municipio y servicios", nombre: "Municipalidad de la Ciudad de Mendoza", tel: "", desc: "Atención al vecino, reclamos y trámites municipales." },
+    { cat: "Municipio y servicios", nombre: "Municipalidad de la Ciudad de Mendoza", tel: "", desc: "Reclamos y trámites municipales." },
     { cat: "Municipio y servicios", nombre: "Hospital Central", tel: "", desc: "Hospital de referencia de la Capital." },
     { cat: "Municipio y servicios", nombre: "Luz · Distribuidora eléctrica", tel: "", desc: "Cortes de luz y emergencias eléctricas." },
-    { cat: "Municipio y servicios", nombre: "Agua y cloacas", tel: "", desc: "Pérdidas, falta de agua y desbordes cloacales." },
+    { cat: "Municipio y servicios", nombre: "Agua y cloacas", tel: "", desc: "Pérdidas, falta de agua y cloacas." },
     { cat: "Municipio y servicios", nombre: "Gas · Emergencias", tel: "", desc: "Olor a gas y escapes." }
   ],
   /* ---------- ENCUESTA A VECINOS ----------
@@ -176,7 +176,8 @@ window.SITE_DATA = {
     nombre: "Fernando Ortiz",
     cargo: "Presidente",
     // Foto: guardar como img/fernando-ortiz.jpg
-    descripcion: "Presidente del Partido Justicialista de la Capital de Mendoza. [Completar con una breve biografía: trayectoria militante, compromiso con la ciudad y los ejes de su conducción.]"
+    // completar con una breve biografía: trayectoria militante, compromiso con la ciudad y los ejes de su conducción
+    descripcion: "Presidente del Partido Justicialista de la Capital de Mendoza."
   },
 
   /* ---------- COMISIÓN PARTIDARIA ---------- */

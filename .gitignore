@@ -4,3 +4,6 @@ desktop.ini
 node_modules/
 .env
 *.log
+.taste-skill/
+shots/
+review.html

@@ -1,351 +1,361 @@
 <!doctype html>
-<html lang="es-AR">
+<html lang="es" data-type="service" data-radius="soft" data-buttons="block" data-motion>
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PJ Capital Mendoza</title>
-  <meta name="description" content="Sitio institucional del Partido Justicialista de la Ciudad de Mendoza: noticias, padrón, afiliación, comisión partidaria y teléfonos útiles." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PJ Capital: el Partido Justicialista de la Ciudad de Mendoza</title>
+<meta name="description" content="Afiliación online con firma digital, padrón de afiliados, encuesta vecinal y teléfonos útiles para las 12 secciones de la Capital mendocina.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PJ Capital: el Partido Justicialista de la Ciudad de Mendoza">
+<meta property="og:description" content="Afiliación online con firma digital, padrón, encuesta vecinal y teléfonos útiles de la Capital.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#fbfcfd">
+<!-- canonical: se agrega cuando exista el dominio del partido -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400..700&family=Libre+Franklin:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/backgrounds/backgrounds.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #fbfcfd; --p-surface: #e9f2fa; --p-ink: #0f2440; --p-muted: #59697e;
+  --p-accent: #2a6fae; --p-accent-ink: #fbfcfd; --p-action: #2a6fae; --p-action-ink: #fbfcfd;
+  --p-inv-bg: #0f2440; --p-inv-surface: #1d314c; --p-inv-ink: #fbfcfd; --p-inv-muted: #99a3b1;
+  --p-inv-accent: #fbfcfd; --p-inv-accent-ink: #0f2440; --p-inv-action: #fbfcfd; --p-inv-action-ink: #0f2440;
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-text: "Libre Franklin", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.02em;
+  --display-tracking-xl: -0.026em;
+}
+</style>
+<link rel="stylesheet" href="css/page.css">
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script src="assets/backgrounds/backgrounds.js"></script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
+<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
 </head>
 <body>
+<!-- type: service (un partido político local: la gente se afilia, consulta y participa)
+     deal: hero split, nav nav-split, close close-type, footer footer-dark, rhythm surface-pairs, buttons block, mark dots
+     palette: colores propios del partido (start.mjs brand): blanco, azul marino y celeste institucional
+     type: source-serif (Source Serif 4 / Libre Franklin)
+     moments: word-highlight (#banderas), pinned-chapters (#pasos) -->
 
-  <!-- ============ HEADER ============ -->
-  <header class="site-header" id="top">
-    <div class="container header-inner">
-      <a href="#top" class="brand" aria-label="PJ Capital Mendoza, inicio">
-        <span class="brand-mark">PJ</span>
-        <span class="brand-text">
-          <strong>Partido Justicialista</strong>
-          <small>Capital · Mendoza</small>
-        </span>
-      </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="main-nav" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
-      <nav id="main-nav" class="main-nav" aria-label="Principal">
-        <a href="#noticias">Noticias</a>
-        <a href="#padron">Padrón</a>
-        <a href="#habitantes">Habitantes</a>
-        <a href="#encuesta">Tu voz</a>
-        <a href="#telefonos">Teléfonos</a>
-        <a href="#comision-partidaria">Comisión</a>
-        <a href="#afiliacion" class="btn btn-sm btn-primary">Afiliate</a>
-      </nav>
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Saltar al contenido</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="dots" aria-hidden="true"></span>PJ Capital</a>
+    <nav class="nav__links" aria-label="Principal">
+      <div class="nav__item"><a class="nav__link" href="#noticias">Noticias</a></div>
+      <div class="nav__item"><a class="nav__link" href="#padron">Padrón</a></div>
+      <div class="nav__item"><a class="nav__link" href="#encuesta">Encuesta</a></div>
+      <div class="nav__item"><a class="nav__link" href="#telefonos">Teléfonos</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="#afiliacion">Afiliarme al PJ</a>
     </div>
-  </header>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menú">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
-  <main>
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow">Ciudad de Mendoza</p>
-          <h1>La Capital se construye<br />con su gente.</h1>
-          <p class="lead">Somos el Partido Justicialista de la Capital de Mendoza. Informate, consultá el padrón y sumate a construir una ciudad más justa, libre y soberana.</p>
-          <div class="hero-actions">
-            <a href="#afiliacion" class="btn btn-primary">Quiero afiliarme</a>
-            <a href="#padron" class="btn btn-ghost">Consultar padrón</a>
+<main id="top">
+
+  <!-- 1. PORTADA (split) -->
+  <section class="hero hero--split" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text grid hero__grid">
+      <div class="hero__text span-5">
+        <p class="hero__kicker"><span class="dot" aria-hidden="true"></span>Encuesta vecinal abierta: 5 preguntas</p>
+        <h1 id="hero-h">Partido Justicialista de Capital, Mendoza</h1>
+        <p class="hero__lead">Afiliate online con firma digital, consultá el padrón y seguí el trabajo del partido en las 12 secciones de la Ciudad de Mendoza.</p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="#afiliacion">Afiliarme al PJ<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          <a class="btn btn--secondary" href="#padron">Consultar el padrón</a>
+        </div>
+      </div>
+      <div class="hero__media span-6 start-7">
+        <img src="assets/img/photo-f85059868-960.jpg" srcset="assets/img/photo-f85059868-500.jpg 500w, assets/img/photo-f85059868-960.jpg 960w" sizes="(max-width: 639px) 100vw, 50vw" width="960" height="640" alt="Paseo arbolado de la Plaza Independencia, en el centro de la Ciudad de Mendoza" style="--ly-pos: 40% 50%" fetchpriority="high" data-source="stand-in" data-subject="Plaza Independencia, Ciudad de Mendoza">
+        <div class="ly-float">
+          <div class="ly-float__row"><span class="ly-live">Afiliación</span><span>Online</span></div>
+          <div class="ly-float__title">Con firma digital, desde el celular</div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- 2. NOTICIAS -->
+  <section class="section" id="noticias" style="--hm: 2" aria-labelledby="noticias-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="noticias-h">Noticias del PJ Capital. <span class="muted">Lo nuevo en el partido y en el sitio.</span></h2>
+      </div>
+      <div class="grid news">
+        <a class="card card--open news__card span-4" href="#afiliacion">
+          <div class="panel panel--top news__pic"><img class="frame__img" src="assets/img/photo-f44342714-960.jpg" width="960" height="640" alt="La peatonal Sarmiento con sus árboles y una pérgola" loading="lazy" decoding="async" data-source="stand-in" data-subject="Peatonal Sarmiento, Ciudad de Mendoza"></div>
+          <p class="t-label muted"><time datetime="2026-11-17">17 de noviembre de 2026</time></p>
+          <h3>Abre la afiliación online con firma digital</h3>
+          <p>Cualquier vecino de la Capital puede afiliarse desde el celular, sin papeles y en pocos minutos.</p>
+        </a>
+        <a class="card card--open news__card span-4" href="#encuesta">
+          <div class="panel panel--top news__pic"><img class="frame__img" src="assets/img/photo-f854444-960.jpg" width="960" height="720" alt="Fuente de azulejos en la Plaza Sarmiento" loading="lazy" decoding="async" data-source="stand-in" data-subject="Plaza Sarmiento, Ciudad de Mendoza"></div>
+          <p class="t-label muted"><time datetime="2026-11-17">17 de noviembre de 2026</time></p>
+          <h3>Lanzamos la encuesta vecinal por sección</h3>
+          <p>Cinco preguntas para saber qué preocupa en cada barrio: inseguridad, sueldos, salud, la justicia y más.</p>
+        </a>
+        <a class="card card--open news__card span-4" href="#telefonos">
+          <div class="panel panel--top news__pic"><img class="frame__img" src="assets/img/photo-f26802902-960.jpg" width="960" height="582" alt="Fuente y murales de la Plaza Independencia" loading="lazy" decoding="async" data-source="stand-in" data-subject="Plaza Independencia, Ciudad de Mendoza"></div>
+          <p class="t-label muted"><time datetime="2026-11-17">17 de noviembre de 2026</time></p>
+          <h3>Reunimos los teléfonos útiles de la Capital</h3>
+          <p>Emergencias, la Línea 144, ANSES, PAMI y salud en un solo lugar, para llamar con un toque.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. PADRÓN (banda celeste, 1 de 2) -->
+  <section class="section ground-surface" id="padron" aria-labelledby="padron-h">
+    <div class="wrap">
+      <div class="grid grid--top fill">
+        <div class="span-6 stack-4">
+          <div class="section-head">
+            <h2 id="padron-h">Padrón de afiliados</h2>
+            <p>Buscá por DNI o por apellido para saber si figurás en el padrón y en qué sección votás en las internas.</p>
+          </div>
+          <form class="padron-search" id="padron-form" novalidate>
+            <div class="field">
+              <label for="padron-q">DNI o apellido</label>
+              <input id="padron-q" name="q" type="search" autocomplete="off" required minlength="3" aria-describedby="padron-q-err">
+              <p class="field__error" id="padron-q-err" hidden>Escribí un DNI sin puntos o un apellido de al menos 3 letras.</p>
+            </div>
+            <div class="btn-row"><button class="btn btn--secondary" type="submit">Buscar en el padrón</button></div>
+          </form>
+          <div id="padron-result" class="padron-result" aria-live="polite"></div>
+        </div>
+        <div class="frame frame--photo frame--fill span-6 start-7">
+          <img class="frame__img" src="assets/img/photo-f2712274-960.jpg" width="960" height="720" alt="Fuente y jardines de la Plaza España, Ciudad de Mendoza" loading="lazy" decoding="async" data-source="stand-in" data-subject="Plaza España, Ciudad de Mendoza">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HABITANTES (banda celeste, 2 de 2) -->
+  <section class="section ground-surface" id="habitantes" aria-labelledby="habitantes-h">
+    <div class="wrap">
+      <div class="grid grid--top fill">
+        <div class="span-5 stack-4">
+          <div class="section-head">
+            <h2 id="habitantes-h">Habitantes de las 12 secciones</h2>
+            <p>Tocá una sección del mapa o de la lista para ver cuántos vecinos viven en ella.</p>
+          </div>
+          <div class="census" aria-live="polite">
+            <p class="t-label muted" id="census-name">Total de la Capital</p>
+            <p class="t-stat" id="census-num">—</p>
+            <p class="t-small muted" id="census-share">12 secciones</p>
           </div>
         </div>
-        <ul class="hero-stats" aria-label="Datos de la Capital">
-          <li><strong>12</strong><span>secciones</span></li>
-          <li><strong id="stat-habitantes">—</strong><span>habitantes</span></li>
-          <li><strong>1</strong><span>proyecto de ciudad</span></li>
-        </ul>
+        <div class="span-6 start-7 census__map">
+          <svg id="mapa" viewBox="0 0 800 430" role="img" aria-label="Mapa de las 12 secciones de la Ciudad de Mendoza, de oeste a este"></svg>
+          <div class="census__legend" aria-hidden="true"><span>Menos</span><span class="census__ramp"></span><span>Más habitantes</span></div>
+          <ol class="census__rows" id="census-rows"></ol>
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============ NOTICIAS ============ -->
-    <section class="section" id="noticias">
-      <div class="container">
+  <!-- 5. LAS TRES BANDERAS (moment: word-highlight) -->
+  <section class="section statement" id="banderas" data-moment="word-highlight" aria-label="Las tres banderas">
+    <div class="wrap">
+      <p class="t-label">Las tres banderas</p>
+      <p class="mo-wh__text">Justicia social, independencia económica y soberanía política: las tres banderas del peronismo guían el trabajo del partido en <strong>cada sección de la Capital</strong>.</p>
+    </div>
+  </section>
+
+  <!-- 6. ENCUESTA VECINAL -->
+  <section class="section" id="encuesta" style="--hm: 2" aria-labelledby="encuesta-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="encuesta-h">Encuesta vecinal. <span class="muted">Qué le preocupa a la Capital.</span></h2>
+      </div>
+      <div class="grid grid--top">
+        <div class="span-6 survey" id="survey">
+          <noscript><p>La encuesta necesita JavaScript activado.</p></noscript>
+        </div>
+        <div class="span-6 start-7 results">
+          <div class="results__head"><h3>Lo que más preocupa</h3><span class="t-small muted" id="results-total"></span></div>
+          <ol class="results__list" id="results"></ol>
+          <p class="t-small muted">Porcentaje de vecinos que eligió cada tema; cada uno elige hasta 3.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. TELÉFONOS ÚTILES (dos pantallas) -->
+  <section class="section g2" id="telefonos" aria-labelledby="telefonos-h">
+    <div class="wrap">
+      <div class="group">
         <div class="section-head">
-          <div>
-            <p class="eyebrow">Actualidad</p>
-            <h2>Noticias</h2>
-          </div>
-          <div class="chips" id="news-filters" role="tablist" aria-label="Filtrar noticias"></div>
+          <h2 id="telefonos-h">Teléfonos útiles de la Capital. <span class="muted">Tocá el número para llamar.</span></h2>
         </div>
-        <div class="news-grid" id="news-grid"></div>
+        <div class="grid sos" id="sos"></div>
+        <div class="grid grid--top tel-cols" id="tel-a"></div>
       </div>
-    </section>
+      <div class="grid grid--top tel-cols" id="tel-b"></div>
+    </div>
+  </section>
 
-    <!-- ============ PADRÓN ============ -->
-    <section class="section section-alt" id="padron">
-      <div class="container narrow">
-        <p class="eyebrow">Afiliados</p>
-        <h2>Consultá el padrón</h2>
-        <p class="muted">Buscá por DNI o por apellido para saber si estás en el padrón partidario y dónde votás en las internas.</p>
-        <form class="padron-search" id="padron-form" autocomplete="off">
-          <label class="sr-only" for="padron-q">DNI o apellido</label>
-          <input id="padron-q" type="search" placeholder="Ej: 30123456 o Gómez" required minlength="3" />
-          <button class="btn btn-primary" type="submit">Buscar</button>
+  <!-- 8. CÓMO AFILIARSE (moment: pinned-chapters) -->
+  <section class="section" id="pasos" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="pasos-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <h2 id="pasos-h">La afiliación en tres pasos</h2>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3>Tus datos: nombre, apellido y DNI</h3>
+            <p>Los mismos que figuran en tu documento, sin puntos en el número.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/photo-f132766443-960.jpg" alt="Monumento de la Plaza Italia entre los árboles" width="960" height="540" data-source="stand-in" data-subject="Plaza Italia, Ciudad de Mendoza"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Tu domicilio en la Capital</h3>
+            <p>Calle, número y la sección donde vivís. La afiliación es para vecinos de la Ciudad de Mendoza.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/photo-f115829383-960.jpg" alt="Palmeras y senderos de la Plaza Chile" width="960" height="720" data-source="stand-in" data-subject="Plaza Chile, Ciudad de Mendoza"></figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Tu firma digital y el acuerdo</h3>
+            <p>Firmás con el dedo o el mouse, leés el acuerdo de adhesión y enviás la solicitud.</p>
+            <figure class="mo-pc__visual"><img src="assets/img/photo-f8995490-960.jpg" alt="Canteros y palmeras del Rosedal del Parque General San Martín" width="960" height="720" data-source="stand-in" data-subject="Rosedal, Parque General San Martín"></figure>
+          </li>
+        </ol>
+      </div>
+      <div class="mo-pc__visuals frame"></div>
+    </div>
+  </section>
+
+  <!-- 9. FICHA DE AFILIACIÓN -->
+  <section class="section ground-surface" id="afiliacion" style="--hm: 2" aria-labelledby="afiliacion-h">
+    <div class="wrap">
+      <div class="grid grid--top">
+        <div class="span-6 stack-4">
+          <div class="section-head">
+            <h2 id="afiliacion-h">Ficha de afiliación al PJ Capital</h2>
+            <p>Para vecinos con domicilio en la Ciudad de Mendoza. La afiliación es gratuita.</p>
+          </div>
+          <div class="agreement" tabindex="0" role="region" aria-label="Acuerdo de adhesión" id="acuerdo-texto"></div>
+        </div>
+        <form class="form afil span-6 start-7" id="afil-form" novalidate data-fix="Revisá {n} campos marcados.">
+          <div class="field"><label for="f-nombre">Nombre</label>
+            <input id="f-nombre" name="nombre" type="text" autocomplete="given-name" required minlength="2" aria-describedby="f-nombre-err">
+            <p class="field__error" id="f-nombre-err" hidden>Escribí tu nombre como figura en el DNI.</p></div>
+          <div class="field"><label for="f-apellido">Apellido</label>
+            <input id="f-apellido" name="apellido" type="text" autocomplete="family-name" required minlength="2" aria-describedby="f-apellido-err">
+            <p class="field__error" id="f-apellido-err" hidden>Escribí tu apellido como figura en el DNI.</p></div>
+          <div class="field"><label for="f-dni">DNI</label>
+            <input id="f-dni" name="dni" type="text" inputmode="numeric" autocomplete="off" required pattern="\d{7,8}" maxlength="8" aria-describedby="f-dni-err">
+            <p class="field__error" id="f-dni-err" hidden>Escribí el DNI con 7 u 8 números, sin puntos.</p></div>
+          <div class="field"><label for="f-seccion">Sección</label>
+            <select id="f-seccion" name="seccion" required aria-describedby="f-seccion-err"><option value="">Elegí tu sección</option></select>
+            <p class="field__error" id="f-seccion-err" hidden>Elegí la sección de tu domicilio.</p></div>
+          <div class="field field--full"><label for="f-calle">Domicilio en la Ciudad de Mendoza</label>
+            <input id="f-calle" name="calle" type="text" autocomplete="street-address" required pattern=".*\d.*" minlength="4" aria-describedby="f-calle-err">
+            <p class="field__error" id="f-calle-err" hidden>Escribí calle y número, por ejemplo Av. San Martín 1200.</p></div>
+          <div class="field field--full">
+            <span class="sign__label" id="firma-label">Firma digital</span>
+            <div class="sign"><canvas id="firma" aria-labelledby="firma-label" role="img"></canvas><span class="sign__hint" id="firma-hint">Firmá acá con el dedo o el mouse</span></div>
+            <div class="sign__row"><button class="link sign__clear" type="button" id="firma-clear">Borrar la firma</button></div>
+            <p class="field__error" id="firma-err" hidden>Falta tu firma.</p>
+          </div>
+          <div class="field field--full check-field">
+            <label class="check" for="f-acepto"><input type="checkbox" id="f-acepto" name="acepto" required aria-describedby="f-acepto-err"><span>Vivo en la Ciudad de Mendoza, leí el acuerdo de adhesión y lo acepto.</span></label>
+            <p class="field__error" id="f-acepto-err" hidden>Para afiliarte tenés que aceptar el acuerdo.</p>
+          </div>
+          <div class="btn-row"><button class="btn btn--primary" type="submit" id="afil-submit">Acepto el acuerdo y me quiero afiliar</button></div>
+          <p class="form__status" role="status" data-form-status id="afil-status"></p>
+          <p class="t-small muted">Te contactamos para confirmar el alta en el padrón.</p>
         </form>
-        <div id="padron-result" class="padron-result" aria-live="polite"></div>
-        <p class="note">Datos de demostración. El padrón oficial se cargará desde la base de datos del partido.</p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- ============ HABITANTES / MAPA ============ -->
-    <section class="section" id="habitantes">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Territorio</p>
-            <h2>Habitantes por sección</h2>
-            <p class="muted">Pasá el cursor o tocá cada sección del mapa para ver cuántos vecinos y vecinas viven en ella.</p>
+  <!-- 10. COMISIÓN PARTIDARIA -->
+  <section class="section" id="comision" style="--hm: 2" aria-labelledby="comision-h">
+    <div class="wrap">
+      <div class="grid grid--top fill">
+        <div class="span-6 stack-4">
+          <div class="section-head">
+            <h2 id="comision-h">Comisión partidaria</h2>
           </div>
-        </div>
-        <div class="map-layout">
-          <figure class="map-card">
-            <svg id="mapa" viewBox="0 0 800 430" role="img" aria-label="Mapa esquemático de las 12 secciones de la Ciudad de Mendoza"></svg>
-            <figcaption>
-              <div class="legend">
-                <span>Menos</span>
-                <span class="legend-bar"></span>
-                <span>Más habitantes</span>
-              </div>
-              <small>Mapa esquemático, no a escala. Oeste a la izquierda (piedemonte), este a la derecha.</small>
-            </figcaption>
-          </figure>
-          <aside class="map-panel" id="map-panel" aria-live="polite">
-            <p class="eyebrow">Sección</p>
-            <h3 id="panel-nombre">Seleccioná una sección</h3>
-            <p class="panel-num" id="panel-habitantes">—</p>
-            <p class="muted" id="panel-detalle">El total de la Capital aparece abajo.</p>
-            <div class="panel-bar"><span id="panel-bar-fill"></span></div>
-            <hr />
-            <ol class="ranking" id="ranking"></ol>
-          </aside>
-        </div>
-        <p class="note">Cifras estimativas de referencia. Reemplazarlas por los datos oficiales del censo (INDEC / DEIE Mendoza) en <code>js/data.js</code>.</p>
-      </div>
-    </section>
-
-    <!-- ============ ENCUESTA / TU VOZ ============ -->
-    <section class="section" id="encuesta">
-      <div class="container encuesta-layout">
-        <div>
-          <p class="eyebrow">Tu voz</p>
-          <h2>¿Qué le preocupa a la Capital?</h2>
-          <p class="muted">Queremos escuchar a cada vecino y vecina. Respondé 5 preguntas rápidas y ayudanos a definir las prioridades del barrio. Es anónimo y lleva menos de un minuto.</p>
-          <button class="btn btn-primary" id="encuesta-abrir">Responder la encuesta</button>
-          <p class="encuesta-gracias" id="encuesta-gracias" hidden>✓ Ya respondiste la encuesta. ¡Gracias por participar!</p>
-        </div>
-        <div class="resultados-card">
-          <div class="resultados-head">
-            <h3>Lo que más preocupa</h3>
-            <span class="muted" id="resultados-total"></span>
-          </div>
-          <ol class="resultados" id="resultados"></ol>
-          <p class="note">% de vecinos que eligieron cada tema (cada uno puede elegir hasta 3). Resultados de demostración: con la base de datos se mostrarán los reales.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ TELÉFONOS ÚTILES ============ -->
-    <section class="section section-alt" id="telefonos">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Comunidad</p>
-            <h2>Teléfonos útiles para la comunidad</h2>
-            <p class="muted">Los números de las entidades que están al servicio de los vecinos y vecinas de la Capital. Desde el celular, tocá el número para llamar.</p>
-          </div>
-        </div>
-
-        <div class="urgentes" id="urgentes" aria-label="Números de emergencia"></div>
-
-        <div class="tel-tools">
-          <div class="tel-search">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
-            <label class="sr-only" for="tel-q">Buscar teléfono</label>
-            <input id="tel-q" type="search" placeholder="Buscar: violencia, jubilados, luz…" />
-          </div>
-          <div class="chips" id="tel-filtros" role="tablist" aria-label="Filtrar por categoría"></div>
-        </div>
-        <div id="tel-lista"></div>
-        <p class="note">Líneas nacionales y de emergencia. Ante una emergencia llamá siempre al <strong>911</strong>.</p>
-      </div>
-    </section>
-
-    <!-- ============ COMISIÓN PARTIDARIA ============ -->
-    <section class="section section-dark" id="comision-partidaria">
-      <div class="container">
-        <p class="eyebrow">Conducción</p>
-        <h2>Comisión partidaria</h2>
-
-        <article class="presidente">
-          <div class="presidente-foto">
-            <img src="img/fernando-ortiz.jpg" alt="Fernando Ortiz" onerror="this.remove()" />
-            <span class="foto-fallback" aria-hidden="true">FO</span>
-          </div>
-          <div class="presidente-info">
-            <span class="badge">Presidente</span>
-            <h3>Fernando Ortiz</h3>
+          <div class="leader">
+            <p class="t-label muted">Presidente</p>
+            <h3 class="leader__name">Fernando Ortiz</h3>
             <p id="presidente-desc"></p>
           </div>
-        </article>
-
-        <h3 class="sub-title">Integrantes de la comisión</h3>
-        <ul class="comision-grid" id="comision"></ul>
-      </div>
-    </section>
-
-    <!-- ============ AFILIACIÓN ============ -->
-    <section class="section section-alt" id="afiliacion">
-      <div class="container afil-layout">
-        <div class="afil-intro">
-          <p class="eyebrow">Sumate</p>
-          <h2>Afiliate al Partido Justicialista</h2>
-          <p class="muted">Completá tus datos, firmá de forma digital y aceptá el acuerdo de adhesión. Es gratis y lleva menos de dos minutos.</p>
-          <ol class="steps">
-            <li><strong>Tus datos</strong> nombre, apellido y DNI.</li>
-            <li><strong>Tu domicilio</strong> en la Ciudad de Mendoza.</li>
-            <li><strong>Tu firma</strong> digital, con el dedo o el mouse.</li>
-            <li><strong>Aceptás</strong> el acuerdo y listo.</li>
-          </ol>
+          <ul class="rows" id="comision-rows"></ul>
         </div>
-
-        <form class="afil-form" id="afil-form" novalidate>
-          <fieldset>
-            <legend>Datos personales</legend>
-            <div class="row">
-              <div class="field">
-                <label for="nombre">Nombre</label>
-                <input id="nombre" name="nombre" required autocomplete="given-name" />
-                <small class="error"></small>
-              </div>
-              <div class="field">
-                <label for="apellido">Apellido</label>
-                <input id="apellido" name="apellido" required autocomplete="family-name" />
-                <small class="error"></small>
-              </div>
-            </div>
-            <div class="field">
-              <label for="dni">DNI</label>
-              <input id="dni" name="dni" required inputmode="numeric" placeholder="Sin puntos, ej: 30123456" maxlength="10" />
-              <small class="error"></small>
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend>Domicilio en la Ciudad de Mendoza</legend>
-            <div class="row">
-              <div class="field grow">
-                <label for="calle">Calle y número</label>
-                <input id="calle" name="calle" required autocomplete="address-line1" placeholder="Ej: Av. San Martín 1200" />
-                <small class="error"></small>
-              </div>
-              <div class="field">
-                <label for="depto">Piso / Depto <span class="opt">(opcional)</span></label>
-                <input id="depto" name="depto" autocomplete="address-line2" />
-              </div>
-            </div>
-            <div class="row">
-              <div class="field grow">
-                <label for="seccion">Sección</label>
-                <select id="seccion" name="seccion" required>
-                  <option value="">Elegí tu sección</option>
-                </select>
-                <small class="error"></small>
-              </div>
-              <div class="field">
-                <label for="barrio">Barrio <span class="opt">(opcional)</span></label>
-                <input id="barrio" name="barrio" />
-              </div>
-            </div>
-            <label class="check">
-              <input type="checkbox" id="residente" name="residente" required />
-              <span>Declaro que mi domicilio está en la Ciudad de Mendoza (Capital).</span>
-            </label>
-            <small class="error" data-for="residente"></small>
-          </fieldset>
-
-          <fieldset>
-            <legend>Firma digital</legend>
-            <div class="firma-wrap">
-              <canvas id="firma" aria-label="Área para firmar"></canvas>
-              <span class="firma-hint" id="firma-hint">Firmá aquí</span>
-            </div>
-            <div class="firma-actions">
-              <small class="muted">Usá el dedo en el celular o el mouse en la computadora.</small>
-              <button type="button" class="btn btn-sm btn-ghost-dark" id="firma-clear">Borrar firma</button>
-            </div>
-            <small class="error" data-for="firma"></small>
-          </fieldset>
-
-          <fieldset>
-            <legend>Acuerdo de adhesión</legend>
-            <div class="acuerdo" tabindex="0" id="acuerdo-texto"></div>
-            <label class="check">
-              <input type="checkbox" id="acepto" name="acepto" required />
-              <span>Leí y acepto el acuerdo de adhesión y la declaración de datos.</span>
-            </label>
-            <small class="error" data-for="acepto"></small>
-          </fieldset>
-
-          <button type="submit" class="btn btn-primary btn-block" id="afil-submit">
-            Acepto el acuerdo · Me quiero afiliar
-          </button>
-          <p class="form-status" id="form-status" role="status"></p>
-        </form>
+        <!-- espacio para la foto de Fernando Ortiz: guardarla como img/fernando-ortiz.jpg (vertical 4:5);
+             mientras no exista se ve esta foto de la Capital -->
+        <div class="frame frame--photo frame--fill span-6 start-7">
+          <img class="frame__img" id="presidente-foto" src="assets/img/photo-f82921622-960.jpg" width="960" height="720" alt="Monumento del Cerro de la Gloria, en el Parque General San Martín" loading="lazy" decoding="async" data-source="stand-in" data-subject="Cerro de la Gloria, Ciudad de Mendoza">
+        </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 
-  <!-- ============ FOOTER ============ -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div>
-        <span class="brand-mark">PJ</span>
-        <p><strong>Partido Justicialista · Capital</strong><br />Ciudad de Mendoza, Argentina</p>
+<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--type">
+      <div class="section-head">
+        <h2 id="close-h">Sumate al PJ de la Capital</h2>
+        <p>La afiliación es online, gratuita y con firma digital.</p>
       </div>
-      <nav aria-label="Pie de página">
-        <a href="#noticias">Noticias</a>
-        <a href="#padron">Padrón</a>
-        <a href="#telefonos">Teléfonos útiles</a>
-        <a href="#afiliacion">Afiliación</a>
-        <a href="#comision-partidaria">Comisión</a>
-      </nav>
-      <p class="footer-copy">© <span id="year"></span> PJ Capital Mendoza</p>
+      <a class="btn btn--primary btn--xl btn--wide" href="#afiliacion">Afiliarme al PJ<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
     </div>
-  </footer>
-
-  <!-- Modal noticias -->
-  <dialog id="news-modal" class="modal">
-    <form method="dialog"><button class="modal-close" aria-label="Cerrar">×</button></form>
-    <div id="news-modal-body"></div>
-  </dialog>
-
-  <!-- Modal encuesta -->
-  <dialog id="encuesta-modal" class="modal encuesta-modal" aria-labelledby="enc-titulo">
-    <button class="modal-close" id="enc-cerrar" aria-label="Cerrar">×</button>
-    <div class="enc-top">
-      <span class="badge">Encuesta vecinal</span>
-      <span class="enc-paso" id="enc-paso"></span>
+    <div class="closing__links">
+      <div class="grid">
+        <div class="span-4 stack-4">
+          <a class="nav__logo" href="#top"><span class="mark" data-mark="dots" aria-hidden="true"></span>PJ Capital</a>
+          <p class="footer__lede">Partido Justicialista de la Ciudad de Mendoza.</p>
+        </div>
+        <div class="span-2 footer__col"><h3>Partido</h3><ul><li><a href="#noticias">Noticias</a></li><li><a href="#comision">Comisión</a></li><li><a href="#banderas">Banderas</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Afiliados</h3><ul><li><a href="#padron">Padrón</a></li><li><a href="#pasos">Cómo afiliarse</a></li></ul></div>
+        <div class="span-2 footer__col"><h3>Vecinos</h3><ul><li><a href="#encuesta">Encuesta</a></li><li><a href="#telefonos">Teléfonos</a></li><li><a href="#habitantes">Habitantes</a></li></ul></div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 PJ Capital Mendoza</span>
+        <div class="socials"></div>
+        <a class="credits" href="credits.html">Fotografías vía Wikimedia Commons</a>
+      </div>
     </div>
-    <div class="enc-progress"><span id="enc-progress"></span></div>
-    <div id="enc-body"></div>
-    <p class="error" id="enc-error"></p>
-    <div class="enc-actions">
-      <button class="btn btn-ghost-dark btn-sm" id="enc-atras">← Atrás</button>
-      <button class="btn btn-primary" id="enc-sig">Siguiente →</button>
-    </div>
-  </dialog>
+  </div>
+</footer>
 
-  <!-- Modal confirmación afiliación -->
-  <dialog id="ok-modal" class="modal modal-sm">
-    <div class="ok-icon" aria-hidden="true">✓</div>
-    <h3>¡Bienvenido/a al peronismo de la Capital!</h3>
-    <p id="ok-text"></p>
-    <form method="dialog"><button class="btn btn-primary btn-block">Cerrar</button></form>
-  </dialog>
+<!-- invitación a la encuesta para cada visitante nuevo (pedido del partido) -->
+<dialog class="invite" id="invite" aria-labelledby="invite-h">
+  <h2 id="invite-h">Encuesta vecinal del PJ Capital</h2>
+  <p>Contanos qué le preocupa a tu barrio: 5 preguntas, menos de un minuto y anónima.</p>
+  <div class="btn-row">
+    <a class="btn btn--primary" href="#encuesta" id="invite-go">Responder la encuesta</a>
+    <button class="btn btn--secondary" type="button" id="invite-close">Ahora no</button>
+  </div>
+</dialog>
 
-  <script src="js/data.js"></script>
-  <script src="js/api.js"></script>
-  <script src="js/main.js"></script>
+<script src="js/data.js"></script>
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
 </body>
 </html>

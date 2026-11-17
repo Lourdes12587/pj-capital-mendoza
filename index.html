@@ -44,18 +44,13 @@
 <link rel="stylesheet" href="css/editorial.css">
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script src="assets/backgrounds/backgrounds.js"></script>
-<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
-<link rel="modulepreload" href="assets/moments/moments.js">
-<link rel="modulepreload" href="assets/moments/lib.js">
-<link rel="modulepreload" href="assets/moments/word-highlight/moment.js">
-<link rel="modulepreload" href="assets/moments/pinned-chapters/moment.js">
 </head>
 <body>
 <!-- type: service (un partido político local: la gente se preafilia, consulta y participa)
      deal: hero split, nav nav-split, close close-type, footer footer-dark, rhythm surface-pairs, buttons block, mark dots
      palette: colores propios del partido (start.mjs brand): blanco, azul marino y celeste institucional
      type: source-serif (Source Serif 4 / Libre Franklin)
-     moments: word-highlight (#banderas), pinned-chapters (#pasos) -->
+     (las secciones Las tres banderas y Pasos se eliminaron) -->
 
 <header class="cabecera" id="cabecera">
   <div class="contenedor cabecera__barra">
@@ -220,41 +215,6 @@
     </div>
   </section>
 
-  <!-- 5. LAS TRES BANDERAS (moment: word-highlight) -->
-  <section class="section statement" id="banderas" data-moment="word-highlight" aria-label="Las tres banderas">
-    <div class="wrap">
-      <p class="t-label">Las tres banderas</p>
-      <p class="mo-wh__text">Justicia social, independencia económica y soberanía política: las tres banderas del peronismo guían el trabajo del partido en <strong>cada sección de la Capital</strong>.</p>
-    </div>
-  </section>
-
-  <!-- 8. CÓMO PREAFILIARSE (moment: pinned-chapters) -->
-  <section class="section" id="pasos" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="pasos-h">
-    <div class="wrap mo-pc__grid">
-      <div class="mo-pc__text">
-        <h2 id="pasos-h">La preafiliación en tres pasos</h2>
-        <ol class="mo-pc__steps">
-          <li class="mo-pc__step">
-            <h3>Tus datos: nombre, apellido y DNI</h3>
-            <p>Los mismos que figuran en tu documento, más un teléfono para que te llamemos.</p>
-            <figure class="mo-pc__visual"><img src="assets/img/photo-f132766443-960.jpg" alt="Monumento de la Plaza Italia entre los árboles" width="960" height="540" data-source="stand-in" data-subject="Plaza Italia, Ciudad de Mendoza"></figure>
-          </li>
-          <li class="mo-pc__step">
-            <h3>Tu sección de la Capital</h3>
-            <p>Elegís en cuál de las 12 secciones de la Ciudad de Mendoza vivís.</p>
-            <figure class="mo-pc__visual"><img src="assets/img/photo-f115829383-960.jpg" alt="Palmeras y senderos de la Plaza Chile" width="960" height="720" data-source="stand-in" data-subject="Plaza Chile, Ciudad de Mendoza"></figure>
-          </li>
-          <li class="mo-pc__step">
-            <h3>Tu consentimiento y el contacto</h3>
-            <p>Aceptás el uso de tus datos y el partido se comunica con vos para completar la afiliación oficial.</p>
-            <figure class="mo-pc__visual"><img src="assets/img/photo-f8995490-960.jpg" alt="Canteros y palmeras del Rosedal del Parque General San Martín" width="960" height="720" data-source="stand-in" data-subject="Rosedal, Parque General San Martín"></figure>
-          </li>
-        </ol>
-      </div>
-      <div class="mo-pc__visuals frame"></div>
-    </div>
-  </section>
-
   <!-- 9. PREAFILIACIÓN (04): NO es la afiliación oficial (CLAUDE.md, sección 2).
        Datos mínimos (Ley 25.326): nombre, apellido, DNI, teléfono, email opcional y sección.
        El formulario conserva la clase "form" del kit: su validación muestra los errores bajo cada campo. -->
@@ -347,8 +307,8 @@
         <p>Partido Justicialista de la Ciudad de Mendoza.</p>
       </div>
       <nav class="pie__nav" aria-label="Pie de página">
-        <div><h3 class="etiqueta">Partido</h3><ul><li><a href="#noticias">Noticias</a></li><li><a href="#comision">Comisión</a></li><li><a href="#banderas">Banderas</a></li></ul></div>
-        <div><h3 class="etiqueta">Afiliados</h3><ul><li><a href="#padron">Padrón</a></li><li><a href="#pasos">Cómo preafiliarse</a></li><li><a href="#preafiliacion">Preafiliación</a></li></ul></div>
+        <div><h3 class="etiqueta">Partido</h3><ul><li><a href="#noticias">Noticias</a></li><li><a href="#comision">Comisión</a></li></ul></div>
+        <div><h3 class="etiqueta">Afiliados</h3><ul><li><a href="#padron">Padrón</a></li><li><a href="#preafiliacion">Preafiliación</a></li></ul></div>
         <div><h3 class="etiqueta">Vecinos</h3><ul><li><a href="#habitantes">Habitantes</a></li></ul></div>
       </nav>
     </div>

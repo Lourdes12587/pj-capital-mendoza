@@ -33,7 +33,7 @@
   --s-6: 32px; --s-7: 48px; --s-8: 64px; --s-9: 96px; --s-10: 128px;
   --gutter: clamp(16px, 4vw, 80px);
   --max: 1280px;
-  --header-h: 72px;
+  --header-h: 88px;
 
   /* forma y movimiento */
   --radio: 0;                    /* rectangular: sin bordes redondeados */
@@ -44,4 +44,4 @@
   /* textura de papel (grano SVG): va sobre beige y negro, nunca sobre texto de lectura */
   --grano: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-@media (max-width: 639px) { :root { --header-h: 60px; } }
+@media (max-width: 639px) { :root { --header-h: 68px; } }

@@ -50,13 +50,16 @@
 .cabecera__barra { height: 100%; display: flex; align-items: center; gap: var(--s-6); }
 .cabecera__marca { display: inline-flex; align-items: center; gap: var(--s-3); text-decoration: none; color: var(--c-negro);
   font: 800 1.25rem/1 var(--f-display); font-stretch: 112%; text-transform: uppercase; letter-spacing: -.01em; }
-.cabecera__marca img { height: 44px; width: auto; }
+.cabecera__marca img { height: 68px; width: auto; }
 .cabecera__nav { margin-left: auto; display: flex; gap: var(--s-6); }
 .cabecera__nav a { font: 500 .9375rem/1 var(--f-texto); color: var(--c-negro); text-decoration: none; padding-block: var(--s-2);
   background: linear-gradient(var(--c-azul), var(--c-azul)) 0 100% / 0 3px no-repeat; transition: background-size var(--dur) var(--ease); }
 .cabecera__nav a:hover, .cabecera__nav a:focus-visible { background-size: 100% 3px; }
 .cabecera__menu { display: none; width: 48px; height: 48px; border: 2px solid var(--c-negro); background: transparent; cursor: pointer; place-items: center; }
 .cabecera__menu span { display: block; width: 20px; height: 2px; background: var(--c-negro); box-shadow: 0 6px 0 var(--c-negro), 0 -6px 0 var(--c-negro); }
+.cabecera__marca { white-space: nowrap; }
+.cabecera__solo-celular { display: none; }
+@media (max-width: 639px) { .cabecera__nav .cabecera__solo-celular { display: block; font-weight: 600; } }
 .salto { position: absolute; left: -9999px; }
 .salto:focus { left: var(--s-4); top: var(--s-3); z-index: 60; background: var(--c-negro); color: var(--c-blanco); padding: var(--s-3) var(--s-4); }
 
@@ -70,9 +73,10 @@
 }
 @media (max-width: 639px) {
   .cabecera__marca { font-size: 1rem; gap: var(--s-2); }
-  .cabecera__marca img { height: 36px; }
+  .cabecera__marca img { height: 52px; }
   .cabecera__barra { gap: var(--s-3); }
-  .cabecera__barra > .boton { min-height: 44px; padding: 0 var(--s-4); font-size: .9375rem; }
+  .cabecera__barra > .boton { display: none; }   /* en celular el botón está en la portada y en el menú */
+  .cabecera__menu { margin-left: auto; }
   .cabecera__menu { width: 44px; height: 44px; }
 }
 

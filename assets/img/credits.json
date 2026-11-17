@@ -2,20 +2,6 @@
  "note": "Credits for the photographs in this folder: photos.mjs credits prints the footer block for the ones the pages use.",
  "photos": [
   {
-   "file": "photo-f85059868-960.jpg",
-   "files": [
-    "photo-f85059868-500.jpg",
-    "photo-f85059868-960.jpg"
-   ],
-   "id": "f85059868",
-   "alt": "Mendoza - Plaza Independencia (14105238653)",
-   "by": "Miguel",
-   "licence": "CC BY-SA 2.0",
-   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
-   "page": "https://commons.wikimedia.org/wiki/File:Mendoza_-_Plaza_Independencia_(14105238653).jpg",
-   "source": "Wikimedia Commons"
-  },
-  {
    "file": "photo-f85059864-960.jpg",
    "files": [
     "photo-f85059864-500.jpg",
@@ -246,6 +232,75 @@
    "licence": "CC BY-SA 2.0",
    "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
    "page": "https://commons.wikimedia.org/wiki/File:Rosedal_del_Parque_San_Mart%C3%ADn_216.jpg",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-f23053458.jpg",
+   "files": [
+    "photo-f23053458-500.jpg",
+    "photo-f23053458-960.jpg",
+    "photo-f23053458.jpg"
+   ],
+   "id": "f23053458",
+   "alt": "Museo del Bicentenario - Urna electoral de 1916",
+   "by": "Carlos San Martín",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Museo_del_Bicentenario_-_Urna_electoral_de_1916.jpg",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-f28156072-960.jpg",
+   "files": [
+    "photo-f28156072-500.jpg",
+    "photo-f28156072-960.jpg"
+   ],
+   "id": "f28156072",
+   "alt": "Casa de Gobierno, Mendoza .",
+   "by": "Itsmemarttin",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Casa_de_Gobierno,_Mendoza_..JPG",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-f28731154-500.jpg",
+   "files": [
+    "photo-f28731154-500.jpg"
+   ],
+   "id": "f28731154",
+   "alt": "Legislatura costado",
+   "by": "Ccarosio",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Legislatura_costado.JPG",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-f28731157-500.jpg",
+   "files": [
+    "photo-f28731157-500.jpg"
+   ],
+   "id": "f28731157",
+   "alt": "Legislatura mendoza",
+   "by": "Ccarosio",
+   "licence": "CC BY-SA 3.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Legislatura_mendoza.JPG",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-f85059868-960.jpg",
+   "files": [
+    "photo-f85059868-500.jpg",
+    "photo-f85059868-960.jpg"
+   ],
+   "id": "f85059868",
+   "alt": "Mendoza - Plaza Independencia (14105238653)",
+   "by": "Miguel",
+   "licence": "CC BY-SA 2.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+   "page": "https://commons.wikimedia.org/wiki/File:Mendoza_-_Plaza_Independencia_(14105238653).jpg",
    "source": "Wikimedia Commons"
   }
  ]
